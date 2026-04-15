@@ -872,7 +872,7 @@ def brochure_template(shop):
     """Generate a brochure page for a shop type — shows 3 tier previews."""
     c = shop["colors"]
     desc = truncate_desc(shop["desc"])
-    schema_json = '{"@context":"https://schema.org","@type":"Service","name":"' + shop["name"] + ' Website Design","description":"' + shop["desc"].replace('"', '\\"') + '","provider":{"@type":"Organization","name":"SA-Flow","url":"https://atul0016.github.io/Web4All"},"areaServed":"India","hasOfferCatalog":{"@type":"OfferCatalog","name":"Website Packages","itemListElement":[{"@type":"Offer","name":"Basic","price":"1500","priceCurrency":"INR"},{"@type":"Offer","name":"Medium","price":"2500","priceCurrency":"INR"},{"@type":"Offer","name":"Advanced","price":"5000","priceCurrency":"INR"}]}}'
+    schema_json = '{"@context":"https://schema.org","@type":"Service","name":"' + shop["name"] + ' Website Design","description":"' + shop["desc"].replace('"', '\\"') + '","provider":{"@type":"Organization","name":"SA-Flow","url":"https://saflow.app"},"areaServed":"India","hasOfferCatalog":{"@type":"OfferCatalog","name":"Website Packages","itemListElement":[{"@type":"Offer","name":"Basic","price":"1500","priceCurrency":"INR"},{"@type":"Offer","name":"Medium","price":"2500","priceCurrency":"INR"},{"@type":"Offer","name":"Advanced","price":"5000","priceCurrency":"INR"}]}}'
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -881,16 +881,16 @@ def brochure_template(shop):
     <title>{shop["name"]} Website Design Starting ₹1,500 | SA-Flow India</title>
     <meta name="description" content="{shop["desc"]}">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://atul0016.github.io/Web4All/brochures/{shop['slug']}.html">
+    <link rel="canonical" href="https://saflow.app/brochures/{shop['slug']}.html">
     <meta property="og:title" content="{shop['name']} Website Design Starting ₹1,500 | SA-Flow">
     <meta property="og:description" content="{shop['desc']}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://atul0016.github.io/Web4All/brochures/{shop['slug']}.html">
-    <meta property="og:image" content="https://atul0016.github.io/Web4All/og-image.png">
+    <meta property="og:url" content="https://saflow.app/brochures/{shop['slug']}.html">
+    <meta property="og:image" content="https://saflow.app/og-image.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{shop['name']} Website Design Starting ₹1,500 | SA-Flow">
     <meta name="twitter:description" content="{shop['desc']}">
-    <meta name="twitter:image" content="https://atul0016.github.io/Web4All/og-image.png">
+    <meta name="twitter:image" content="https://saflow.app/og-image.png">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1104,7 +1104,7 @@ def brochure_template(shop):
 
     <footer class="b-footer">
         <div class="container">
-            <p>&copy; 2026 SA-Flow. All rights reserved. | saflowtech@gmail.com | <a href="https://atul0016.github.io/Web4All" style="color:rgba(255,255,255,0.5)">SA-Flow</a></p>
+            <p>&copy; 2026 SA-Flow. All rights reserved. | saflowtech@gmail.com | <a href="https://saflow.app" style="color:rgba(255,255,255,0.5)">saflow.app</a></p>
         </div>
     </footer>
 </body>
@@ -1123,16 +1123,16 @@ def basic_template(shop):
     <title>{shop["name"]} — {shop["tagline"]}</title>
     <meta name="description" content="{meta_desc}">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://atul0016.github.io/Web4All/examples/{shop['slug']}/basic/">
+    <link rel="canonical" href="https://saflow.app/examples/{shop['slug']}/basic/">
     <meta property="og:title" content="{shop['name']} — {shop['tagline']}">
     <meta property="og:description" content="{meta_desc}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://atul0016.github.io/Web4All/examples/{shop['slug']}/basic/">
-    <meta property="og:image" content="https://atul0016.github.io/Web4All/og-image.png">
+    <meta property="og:url" content="https://saflow.app/examples/{shop['slug']}/basic/">
+    <meta property="og:image" content="https://saflow.app/og-image.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{shop['name']} — Basic Website Demo">
     <meta name="twitter:description" content="{meta_desc}">
-    <meta name="twitter:image" content="https://atul0016.github.io/Web4All/og-image.png">
+    <meta name="twitter:image" content="https://saflow.app/og-image.png">
     <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1243,16 +1243,16 @@ def medium_template(shop):
     <title>{shop["name"]} — {shop["tagline"]}</title>
     <meta name="description" content="{meta_desc}">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://atul0016.github.io/Web4All/examples/{shop['slug']}/medium/">
+    <link rel="canonical" href="https://saflow.app/examples/{shop['slug']}/medium/">
     <meta property="og:title" content="{shop['name']} — {shop['tagline']}">
     <meta property="og:description" content="{meta_desc}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://atul0016.github.io/Web4All/examples/{shop['slug']}/medium/">
-    <meta property="og:image" content="https://atul0016.github.io/Web4All/og-image.png">
+    <meta property="og:url" content="https://saflow.app/examples/{shop['slug']}/medium/">
+    <meta property="og:image" content="https://saflow.app/og-image.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{shop['name']} — Medium Website Demo">
     <meta name="twitter:description" content="{meta_desc}">
-    <meta name="twitter:image" content="https://atul0016.github.io/Web4All/og-image.png">
+    <meta name="twitter:image" content="https://saflow.app/og-image.png">
     <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1489,7 +1489,7 @@ def medium_template(shop):
                 <a href="#">📸</a>
                 <a href="#">🐦</a>
             </div>
-            <p>&copy; 2026 {shop["name"]}. Website designed by <a href="../../../index.html" style="color:rgba(255,255,255,0.5)">SA-Flow</a> | <a href="https://atul0016.github.io/Web4All" style="color:rgba(255,255,255,0.4)">SA-Flow</a></p>
+            <p>&copy; 2026 {shop["name"]}. Website designed by <a href="../../../index.html" style="color:rgba(255,255,255,0.5)">SA-Flow</a> | <a href="https://saflow.app" style="color:rgba(255,255,255,0.4)">saflow.app</a></p>
         </div>
     </footer>
 </body>
@@ -1508,16 +1508,16 @@ def advanced_template(shop):
     <title>{shop["name"]} — {shop["tagline"]}</title>
     <meta name="description" content="{meta_desc}">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://atul0016.github.io/Web4All/examples/{shop['slug']}/advanced/">
+    <link rel="canonical" href="https://saflow.app/examples/{shop['slug']}/advanced/">
     <meta property="og:title" content="{shop['name']} — {shop['tagline']}">
     <meta property="og:description" content="{meta_desc}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://atul0016.github.io/Web4All/examples/{shop['slug']}/advanced/">
-    <meta property="og:image" content="https://atul0016.github.io/Web4All/og-image.png">
+    <meta property="og:url" content="https://saflow.app/examples/{shop['slug']}/advanced/">
+    <meta property="og:image" content="https://saflow.app/og-image.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{shop['name']} — Advanced Website Demo">
     <meta name="twitter:description" content="{meta_desc}">
-    <meta name="twitter:image" content="https://atul0016.github.io/Web4All/og-image.png">
+    <meta name="twitter:image" content="https://saflow.app/og-image.png">
     <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1960,7 +1960,7 @@ def advanced_template(shop):
                 </div>
             </div>
             <div class="a-footer-bottom">
-                &copy; 2026 {shop["name"]}. All rights reserved. | Website by <a href="../../../index.html" style="color:rgba(255,255,255,0.6);">SA-Flow</a> | <a href="https://atul0016.github.io/Web4All" style="color:rgba(255,255,255,0.4)">SA-Flow</a>
+                &copy; 2026 {shop["name"]}. All rights reserved. | Website by <a href="../../../index.html" style="color:rgba(255,255,255,0.6);">SA-Flow</a> | <a href="https://saflow.app" style="color:rgba(255,255,255,0.4)">saflow.app</a>
             </div>
         </div>
     </footer>
