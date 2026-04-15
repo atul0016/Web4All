@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop-up Shop — Limited Time, Unlimited Style</title>
+    <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{ margin:0;padding:0;box-sizing:border-box; }
+        :root{ --bg:#EDF1F5;--accent:#0145F2;--accent-light:#e8efff;--text:#0f172a; }
+        html{ scroll-behavior:smooth; }
+        body{ font-family:'Inter',-apple-system,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased; }
+        a{ color:inherit;text-decoration:none; }
+        .container{ max-width:1000px;margin:0 auto;padding:0 20px; }
+
+        /* Demo Banner */
+        .demo-banner{ background:var(--accent);color:#fff;text-align:center;padding:8px;font-size:12px;font-weight:600; }
+        .demo-banner a{ color:#fff;text-decoration:underline; }
+
+        /* Nav */
+        nav{ background:#fff;padding:16px 0;border-bottom:1px solid rgba(0,0,0,0.06);position:sticky;top:0;z-index:50; }
+        nav .container{ display:flex;align-items:center;justify-content:space-between; }
+        .shop-name{ font-size:22px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:8px; }
+        .nav-email{ font-size:14px;font-weight:600;color:var(--accent); }
+
+        /* Hero */
+        .hero{ position:relative;height:70vh;min-height:400px;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;color:#fff; }
+        .hero img{ position:absolute;inset:0;width:100%;height:100%;object-fit:cover; }
+        .hero-overlay{ position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.6),rgba(0,0,0,0.4)); }
+        .hero-text{ position:relative;z-index:1;max-width:600px;padding:20px; }
+        .hero-text h1{ font-size:clamp(28px,6vw,48px);font-weight:900;letter-spacing:-0.03em;line-height:1.1;margin-bottom:8px; }
+        .hero-text p{ font-size:18px;opacity:0.9;margin-bottom:24px; }
+        .hero-btn{ display:inline-flex;padding:14px 32px;background:var(--accent);color:#fff;border-radius:100px;font-weight:700;font-size:15px;transition:all 0.2s; }
+        .hero-btn:hover{ filter:brightness(1.1);transform:translateY(-2px); }
+
+        /* Products */
+        .section{ padding:60px 0; }
+        .section:nth-child(even){ background:#fff; }
+        .section-title{ text-align:center;font-size:clamp(22px,4vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:32px; }
+        .products{ display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
+        .product{ background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);transition:all 0.2s; }
+        .product:hover{ transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,0.08); }
+        .product img{ width:100%;height:160px;object-fit:cover; }
+        .product h3{ padding:14px 16px;font-size:15px;font-weight:600; }
+
+        /* Map */
+        .map-frame{ width:100%;height:300px;border:0;border-radius:14px; }
+
+        /* Contact */
+        .contact-bar{ background:var(--accent);color:#fff;padding:32px 0;text-align:center; }
+        .contact-bar h3{ font-size:22px;font-weight:700;margin-bottom:8px; }
+        .contact-bar p{ font-size:16px;opacity:0.85; }
+
+        /* Footer */
+        footer{ background:#111;color:#fff;padding:20px 0;text-align:center;font-size:12px;opacity:0.5; }
+
+        @media(max-width:640px){ .products{ grid-template-columns:1fr 1fr; } .hero{ height:50vh; } }
+    </style>
+</head>
+<body>
+    <div class="demo-banner">
+        🎪 This is a BASIC tier demo — <a href="../../../brochures/popup-shops.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
+    </div>
+    <nav>
+        <div class="container">
+            <div class="shop-name">🎪 Pop-up Shop</div>
+            <div class="nav-email">📧 info@example.com</div>
+        </div>
+    </nav>
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80" alt="Pop-up Shop">
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <h1>Limited Time, Unlimited Style</h1>
+            <p>A trendy website for your pop-up events — create buzz with countdown timers and exclusive launches....</p>
+            <a href="#contact" class="hero-btn">Contact Us</a>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Products &amp; Services</h2>
+            <div class="products">
+                <div class="product"><img src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?w=600&q=80" alt="Exclusive Launches" loading="lazy"><h3>Exclusive Launches</h3></div><div class="product"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80" alt="Limited Editions" loading="lazy"><h3>Limited Editions</h3></div><div class="product"><img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&q=80" alt="Flash Sales" loading="lazy"><h3>Flash Sales</h3></div><div class="product"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Brand Collaborations" loading="lazy"><h3>Brand Collaborations</h3></div><div class="product"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80" alt="Seasonal Collections" loading="lazy"><h3>Seasonal Collections</h3></div><div class="product"><img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80" alt="Art Exhibitions" loading="lazy"><h3>Art Exhibitions</h3></div>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="location">
+        <div class="container">
+            <h2 class="section-title">Find Us</h2>
+            <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117235.18759521538!2d85.2493468!3d23.3440997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e104aa5db7dd%3A0xdc09d49d6fee60df!2sRanchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </section>
+    <section class="contact-bar" id="contact">
+        <h3>Visit us today!</h3>
+        <p>Main Road, Ranchi, Jharkhand — Email: info@example.com</p>
+    </section>
+    <footer><p>&copy; 2026 Pop-up Shop. Website by SA-Flow.</p></footer>
+</body>
+</html>

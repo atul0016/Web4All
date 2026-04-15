@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirana / Grocery Store — Your Neighborhood Store, Now Online</title>
+    <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{ margin:0;padding:0;box-sizing:border-box; }
+        :root{ --bg:#EFEDE6;--accent:#CD0000;--accent-light:#fde8e8;--text:#1a1a1a; }
+        html{ scroll-behavior:smooth; }
+        body{ font-family:'Inter',-apple-system,sans-serif;color:var(--text);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased; }
+        a{ color:inherit;text-decoration:none; }
+        .container{ max-width:1100px;margin:0 auto;padding:0 24px; }
+
+        /* Demo Banner */
+        .demo-banner{ background:var(--accent);color:#fff;text-align:center;padding:8px;font-size:12px;font-weight:600; }
+        .demo-banner a{ color:#fff;text-decoration:underline; }
+
+        /* Nav */
+        .m-nav{ background:#fff;padding:14px 0;border-bottom:1px solid #f0f0f0;position:sticky;top:0;z-index:99;backdrop-filter:blur(10px); }
+        .m-nav .container{ display:flex;align-items:center;justify-content:space-between; }
+        .m-logo{ font-size:22px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:8px; }
+        .m-links{ display:flex;gap:28px; }
+        .m-links a{ font-size:14px;font-weight:500;color:#64748b;transition:color 0.2s; }
+        .m-links a:hover{ color:var(--accent); }
+        .m-cta{ display:inline-flex;padding:8px 20px;background:var(--accent);color:#fff;border-radius:100px;font-size:13px;font-weight:600; }
+
+        /* Hero */
+        .m-hero{ position:relative;height:80vh;min-height:500px;display:flex;align-items:center;overflow:hidden; }
+        .m-hero img{ position:absolute;inset:0;width:100%;height:100%;object-fit:cover; }
+        .m-hero-overlay{ position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 60%,rgba(0,0,0,0.15) 100%); }
+        .m-hero-content{ position:relative;z-index:1;color:#fff;max-width:550px; }
+        .m-hero-content h1{ font-size:clamp(32px,5vw,52px);font-weight:900;letter-spacing:-0.03em;line-height:1.08;margin-bottom:16px; }
+        .m-hero-content p{ font-size:17px;opacity:0.85;margin-bottom:28px;line-height:1.7; }
+        .m-hero-actions{ display:flex;gap:12px; }
+        .btn-hero{ padding:14px 32px;border-radius:100px;font-weight:700;font-size:15px;transition:all 0.2s; }
+        .btn-hero.primary{ background:#fff;color:var(--accent); }
+        .btn-hero.ghost{ background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3); }
+
+        /* Sections */
+        .m-section{ padding:80px 0; }
+        .m-section:nth-child(even){ background:var(--bg); }
+        .m-section-header{ text-align:center;margin-bottom:48px; }
+        .m-section-header h2{ font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-0.02em;margin-bottom:8px; }
+        .m-section-header p{ color:#64748b;font-size:16px; }
+
+        /* Products Grid */
+        .m-products{ display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
+        .m-product{ background:#fff;border-radius:16px;overflow:hidden;border:1px solid #eee;transition:all 0.3s; }
+        .m-product:hover{ transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.08); }
+        .m-product img{ width:100%;height:200px;object-fit:cover; }
+        .m-product-body{ padding:18px; }
+        .m-product-body h3{ font-size:17px;font-weight:700;margin-bottom:4px; }
+        .m-product-body p{ font-size:13px;color:#64748b; }
+
+        /* Gallery */
+        .m-gallery{ display:grid;grid-template-columns:repeat(3,1fr);gap:8px; }
+        .m-gallery img{ width:100%;height:250px;object-fit:cover;border-radius:12px;cursor:pointer;transition:all 0.3s; }
+        .m-gallery img:hover{ transform:scale(1.02);box-shadow:0 8px 24px rgba(0,0,0,0.12); }
+
+        /* Reviews */
+        .m-reviews{ display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
+        .m-review{ background:#fff;border:1px solid #eee;border-radius:16px;padding:24px;transition:all 0.3s; }
+        .m-review:hover{ box-shadow:0 8px 20px rgba(0,0,0,0.06); }
+        .m-review .stars{ color:#f59e0b;font-size:16px;margin-bottom:10px; }
+        .m-review p{ font-size:14px;color:#475569;margin-bottom:12px;line-height:1.6; }
+        .m-review .author{ font-size:13px;font-weight:600; }
+
+        /* About */
+        .m-about{ display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center; }
+        .m-about img{ width:100%;height:380px;object-fit:cover;border-radius:20px; }
+        .m-about-text h3{ font-size:28px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px; }
+        .m-about-text p{ color:#475569;font-size:15px;line-height:1.7;margin-bottom:12px; }
+
+        /* Contact */
+        .m-contact{ display:grid;grid-template-columns:1fr 1fr;gap:48px; }
+        .m-contact-info h3{ font-size:24px;font-weight:800;margin-bottom:16px; }
+        .m-contact-info p{ color:#475569;font-size:15px;margin-bottom:20px; }
+        .m-contact-detail{ display:flex;align-items:center;gap:10px;font-size:15px;padding:8px 0; }
+        .m-form{ background:var(--bg);border-radius:20px;padding:32px; }
+        .m-form input,.m-form textarea,.m-form select{ width:100%;padding:12px 16px;border:1.5px solid #ddd;border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:14px;background:#fff;outline:none;transition:border 0.2s; }
+        .m-form input:focus,.m-form textarea:focus{ border-color:var(--accent); }
+        .m-form button{ width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.2s; }
+        .m-form button:hover{ filter:brightness(0.9); }
+
+        /* Map */
+        .m-map{ width:100%;height:300px;border:0;border-radius:16px;margin-top:32px; }
+
+        /* Footer */
+        .m-footer{ background:#0f172a;color:#fff;padding:40px 0;text-align:center; }
+        .m-footer .social{ display:flex;justify-content:center;gap:16px;margin-bottom:16px; }
+        .m-footer .social a{ width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s; }
+        .m-footer .social a:hover{ background:var(--accent); }
+        .m-footer p{ font-size:13px;opacity:0.4; }
+
+        @media(max-width:768px){
+            .m-links{ display:none; }
+            .m-products,.m-reviews,.m-gallery{ grid-template-columns:1fr; }
+            .m-about,.m-contact{ grid-template-columns:1fr; }
+            .m-hero{ height:60vh; }
+            .m-hero-actions{ flex-direction:column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-banner">
+        🛒 This is a MEDIUM tier demo — <a href="../../../brochures/kirana-grocery.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
+    </div>
+
+    <nav class="m-nav">
+        <div class="container">
+            <div class="m-logo">🛒 Kirana / Grocery Store</div>
+            <div class="m-links">
+                <a href="#products">Products</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#about">About</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="#contact" class="m-cta">Get in Touch</a>
+        </div>
+    </nav>
+
+    <section class="m-hero">
+        <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=1200&q=80" alt="Kirana / Grocery Store">
+        <div class="m-hero-overlay"></div>
+        <div class="container m-hero-content">
+            <h1>Your Neighborhood Store, Now Online</h1>
+            <p>Serving the neighborhood for over 15 years with quality groceries, daily essentials, and household items at the best prices. We stock everything your family needs — from fresh spic...</p>
+            <div class="m-hero-actions">
+                <a href="#products" class="btn-hero primary">View Products</a>
+                <a href="#contact" class="btn-hero ghost">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="m-section" id="products">
+        <div class="container">
+            <div class="m-section-header">
+                <h2>Our Products &amp; Services</h2>
+                <p>Quality you can trust, variety you'll love</p>
+            </div>
+            <div class="m-products">
+                <div class="m-product">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&q=80" alt="Rice & Grains" loading="lazy">
+                    <div class="m-product-body">
+                        <h3>Rice & Grains</h3>
+                        <p>Premium quality products for your needs</p>
+                    </div>
+                </div><div class="m-product">
+                    <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=600&q=80" alt="Cooking Oil & Ghee" loading="lazy">
+                    <div class="m-product-body">
+                        <h3>Cooking Oil & Ghee</h3>
+                        <p>Premium quality products for your needs</p>
+                    </div>
+                </div><div class="m-product">
+                    <img src="https://images.unsplash.com/photo-1556767576-5ec41e3239ea?w=600&q=80" alt="Spices & Masala" loading="lazy">
+                    <div class="m-product-body">
+                        <h3>Spices & Masala</h3>
+                        <p>Premium quality products for your needs</p>
+                    </div>
+                </div><div class="m-product">
+                    <img src="https://images.unsplash.com/photo-1601599561213-832382fd07ba?w=600&q=80" alt="Snacks & Beverages" loading="lazy">
+                    <div class="m-product-body">
+                        <h3>Snacks & Beverages</h3>
+                        <p>Premium quality products for your needs</p>
+                    </div>
+                </div><div class="m-product">
+                    <img src="https://images.unsplash.com/photo-1553546895-531931aa1aa8?w=600&q=80" alt="Cleaning Supplies" loading="lazy">
+                    <div class="m-product-body">
+                        <h3>Cleaning Supplies</h3>
+                        <p>Premium quality products for your needs</p>
+                    </div>
+                </div><div class="m-product">
+                    <img src="https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?w=600&q=80" alt="Personal Care" loading="lazy">
+                    <div class="m-product-body">
+                        <h3>Personal Care</h3>
+                        <p>Premium quality products for your needs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="m-section" id="gallery">
+        <div class="container">
+            <div class="m-section-header">
+                <h2>Gallery</h2>
+                <p>Take a look inside our store</p>
+            </div>
+            <div class="m-gallery">
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&q=80" alt="Gallery" loading="lazy"><img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=600&q=80" alt="Gallery" loading="lazy"><img src="https://images.unsplash.com/photo-1556767576-5ec41e3239ea?w=600&q=80" alt="Gallery" loading="lazy"><img src="https://images.unsplash.com/photo-1601599561213-832382fd07ba?w=600&q=80" alt="Gallery" loading="lazy"><img src="https://images.unsplash.com/photo-1553546895-531931aa1aa8?w=600&q=80" alt="Gallery" loading="lazy"><img src="https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?w=600&q=80" alt="Gallery" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section class="m-section" id="about">
+        <div class="container">
+            <div class="m-about">
+                <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=1200&q=80" alt="Kirana / Grocery Store" loading="lazy">
+                <div class="m-about-text">
+                    <h3>About Us</h3>
+                    <p>Serving the neighborhood for over 15 years with quality groceries, daily essentials, and household items at the best prices. We stock everything your family needs — from fresh spices to premium brands.</p>
+                    <p>Visit us and experience the difference. We're located in the heart of Ranchi, serving customers with dedication and quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="m-section" id="reviews">
+        <div class="container">
+            <div class="m-section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Real reviews from real people</p>
+            </div>
+            <div class="m-reviews">
+                <div class="m-review">
+                    <div class="stars">★★★★★</div>
+                    <p>"Excellent quality and great service! Have been a regular customer for over 2 years now. Highly recommended!"</p>
+                    <div class="author">— Rahul S.</div>
+                </div>
+                <div class="m-review">
+                    <div class="stars">★★★★★</div>
+                    <p>"Best kirana / grocery store in Ranchi! The staff is friendly and prices are very reasonable. Will definitely come back."</p>
+                    <div class="author">— Priya M.</div>
+                </div>
+                <div class="m-review">
+                    <div class="stars">★★★★☆</div>
+                    <p>"Great variety and quality products. The store is well-organized and clean. Very satisfied with my experience."</p>
+                    <div class="author">— Amit K.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="m-section" id="contact">
+        <div class="container">
+            <div class="m-section-header">
+                <h2>Contact Us</h2>
+                <p>We'd love to hear from you</p>
+            </div>
+            <div class="m-contact">
+                <div class="m-contact-info">
+                    <h3>Kirana / Grocery Store</h3>
+                    <p>Visit us at our store or reach out through any of the channels below.</p>
+                    <div class="m-contact-detail">📍 Main Road, Ranchi, Jharkhand - 834001</div>
+                    <div class="m-contact-detail"> info@example.com</div>
+                    <div class="m-contact-detail">🕐 Mon–Sat: 9:00 AM – 9:00 PM</div>
+                    <iframe class="m-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117235.18759521538!2d85.2493468!3d23.3440997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e104aa5db7dd%3A0xdc09d49d6fee60df!2sRanchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="m-form">
+                    <h3 style="font-size:20px;font-weight:700;margin-bottom:20px;">Send us a message</h3>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea rows="4" placeholder="Your Message"></textarea>
+                    <button type="button" onclick="alert('Thank you! We will get back to you soon.')">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="m-footer">
+        <div class="container">
+            <div class="social">
+                <a href="#">📘</a>
+                <a href="#">📸</a>
+                <a href="#">🐦</a>
+            </div>
+            <p>&copy; 2026 Kirana / Grocery Store. Website designed by <a href="../../../index.html" style="color:rgba(255,255,255,0.5)">SA-Flow</a> | <a href="https://saflow.app" style="color:rgba(255,255,255,0.4)">saflow.app</a></p>
+        </div>
+    </footer>
+</body>
+</html>

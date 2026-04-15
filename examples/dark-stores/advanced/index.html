@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Store — Hyperlocal Delivery, Lightning Fast</title>
+    <meta name="description" content="A micro-fulfillment center designed for lightning-fast hyperlocal delivery. Order online, get it at your doorstep in minutes.">
+    <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{ margin:0;padding:0;box-sizing:border-box; }
+        :root{ --bg:#EDF1F5;--accent:#0145F2;--accent-light:#e8efff;--text:#0f172a; }
+        html{ scroll-behavior:smooth; }
+        body{ font-family:'Inter',-apple-system,sans-serif;color:var(--text);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased; }
+        a{ color:inherit;text-decoration:none; }
+        .container{ max-width:1200px;margin:0 auto;padding:0 24px; }
+
+        /* Demo Banner */
+        .demo-banner{ background:var(--accent);color:#fff;text-align:center;padding:10px;font-size:12px;font-weight:600; }
+        .demo-banner a{ color:#fff;text-decoration:underline; }
+
+        /* Nav */
+        .a-nav{ background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.04);position:sticky;top:0;z-index:100; }
+        .a-nav .container{ display:flex;align-items:center;justify-content:space-between; }
+        .a-logo{ font-size:24px;font-weight:900;letter-spacing:-0.03em;display:flex;align-items:center;gap:10px; }
+        .a-links{ display:flex;gap:28px; }
+        .a-links a{ font-size:14px;font-weight:500;color:#475569;transition:color 0.2s; }
+        .a-links a:hover{ color:var(--accent); }
+        .a-nav-actions{ display:flex;align-items:center;gap:12px; }
+        .a-cta{ padding:10px 24px;background:var(--accent);color:#fff;border-radius:100px;font-size:14px;font-weight:600;transition:all 0.2s; }
+        .a-cta:hover{ filter:brightness(0.9);transform:translateY(-1px); }
+
+        /* Hero — Advanced */
+        .a-hero{ position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden; }
+        .a-hero-bg{ position:absolute;inset:0; }
+        .a-hero-bg img{ width:100%;height:100%;object-fit:cover; }
+        .a-hero-bg::after{ content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.15) 100%); }
+        .a-hero-content{ position:relative;z-index:1;color:#fff;max-width:650px; }
+        .a-hero-badge{ display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:100px;font-size:12px;font-weight:600;backdrop-filter:blur(10px);margin-bottom:24px; }
+        .a-hero-badge .dot{ width:6px;height:6px;border-radius:50%;background:#22c55e; }
+        .a-hero-content h1{ font-size:clamp(36px,6vw,64px);font-weight:900;letter-spacing:-0.04em;line-height:1.05;margin-bottom:20px; }
+        .a-hero-content p{ font-size:18px;opacity:0.85;line-height:1.7;margin-bottom:32px;max-width:500px; }
+        .a-hero-btns{ display:flex;gap:14px;flex-wrap:wrap; }
+        .btn-a{ padding:16px 36px;border-radius:100px;font-weight:700;font-size:15px;transition:all 0.2s;cursor:pointer;border:none; }
+        .btn-a.primary{ background:#fff;color:var(--accent); }
+        .btn-a.primary:hover{ box-shadow:0 8px 20px rgba(0,0,0,0.2);transform:translateY(-2px); }
+        .btn-a.secondary{ background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.3);backdrop-filter:blur(5px); }
+
+        /* Sections */
+        .a-section{ padding:100px 0; }
+        .a-section.alt{ background:var(--bg); }
+        .a-header{ text-align:center;margin-bottom:56px; }
+        .a-tag{ display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin-bottom:12px; }
+        .a-header h2{ font-size:clamp(28px,4.5vw,44px);font-weight:800;letter-spacing:-0.03em;margin-bottom:10px; }
+        .a-header p{ color:#64748b;font-size:17px;max-width:500px;margin:0 auto; }
+
+        /* Features Grid */
+        .a-features{ display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
+        .a-feature{ background:#fff;border:1px solid #f0f0f0;border-radius:20px;padding:32px;transition:all 0.3s; }
+        .a-feature:hover{ transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.06);border-color:#ddd; }
+        .a-feature .icon{ width:48px;height:48px;border-radius:14px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px; }
+        .a-feature h3{ font-size:18px;font-weight:700;margin-bottom:6px; }
+        .a-feature p{ font-size:14px;color:#64748b;line-height:1.6; }
+
+        /* Products — Advanced Layout */
+        .a-products{ display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
+        .a-prod{ background:#fff;border-radius:20px;overflow:hidden;border:1px solid #f0f0f0;transition:all 0.3s;position:relative; }
+        .a-prod:hover{ transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.08); }
+        .a-prod img{ width:100%;height:240px;object-fit:cover;transition:transform 0.5s; }
+        .a-prod:hover img{ transform:scale(1.05); }
+        .a-prod-body{ padding:20px; }
+        .a-prod-body h3{ font-size:18px;font-weight:700;margin-bottom:4px; }
+        .a-prod-body p{ font-size:13px;color:#64748b; }
+
+        /* Testimonials Carousel */
+        .a-testimonials{ display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
+        .a-testi{ background:#fff;border:1px solid #eee;border-radius:20px;padding:32px;position:relative; }
+        .a-testi .quote{ font-size:48px;color:var(--accent);opacity:0.15;line-height:1;position:absolute;top:16px;right:24px; }
+        .a-testi .stars{ color:#f59e0b;font-size:14px;margin-bottom:12px; }
+        .a-testi p{ font-size:15px;color:#475569;line-height:1.7;margin-bottom:16px; }
+        .a-testi .author{ display:flex;align-items:center;gap:10px; }
+        .a-testi .avatar{ width:38px;height:38px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--accent); }
+        .a-testi .author-info{ font-size:14px; }
+        .a-testi .author-info strong{ display:block;font-weight:600; }
+        .a-testi .author-info span{ color:#94a3b8;font-size:12px; }
+
+        /* FAQ */
+        .a-faq{ max-width:700px;margin:0 auto; }
+        .faq-item{ border-bottom:1px solid #eee;padding:20px 0; }
+        .faq-q{ display:flex;justify-content:space-between;align-items:center;font-size:16px;font-weight:600;cursor:pointer;padding:4px 0; }
+        .faq-q span{ transition:transform 0.2s; }
+        .faq-a{ max-height:0;overflow:hidden;transition:max-height 0.3s ease;font-size:15px;color:#64748b;line-height:1.7; }
+        .faq-item.open .faq-a{ max-height:200px;padding-top:12px; }
+        .faq-item.open .faq-q span{ transform:rotate(45deg); }
+
+        /* Blog */
+        .a-blog{ display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
+        .blog-card{ background:#fff;border-radius:20px;overflow:hidden;border:1px solid #f0f0f0;transition:all 0.3s; }
+        .blog-card:hover{ transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.06); }
+        .blog-card img{ width:100%;height:200px;object-fit:cover; }
+        .blog-body{ padding:20px; }
+        .blog-body .date{ font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:0.5px; }
+        .blog-body h3{ font-size:17px;font-weight:700;margin:6px 0;line-height:1.3; }
+        .blog-body p{ font-size:13px;color:#64748b; }
+
+        /* CTA */
+        .a-cta-section{ background:var(--accent);padding:80px 0;text-align:center;color:#fff; }
+        .a-cta-section h2{ font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-0.03em;margin-bottom:12px; }
+        .a-cta-section p{ font-size:17px;opacity:0.8;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto; }
+        .a-cta-btn{ display:inline-flex;padding:16px 40px;background:#fff;color:var(--accent);font-weight:700;font-size:16px;border-radius:100px;transition:all 0.2s; }
+        .a-cta-btn:hover{ box-shadow:0 8px 24px rgba(0,0,0,0.2);transform:translateY(-2px); }
+
+        /* Contact Advanced */
+        .a-contact{ display:grid;grid-template-columns:1fr 1fr;gap:60px; }
+        .a-contact-form{ background:var(--bg);border-radius:24px;padding:40px; }
+        .a-contact-form h3{ font-size:22px;font-weight:800;margin-bottom:24px; }
+        .a-input-row{ display:grid;grid-template-columns:1fr 1fr;gap:14px; }
+        .a-input{ width:100%;padding:14px 18px;border:1.5px solid #ddd;border-radius:12px;font-family:inherit;font-size:14px;background:#fff;outline:none;transition:border 0.2s;margin-bottom:14px; }
+        .a-input:focus{ border-color:var(--accent); }
+        textarea.a-input{ resize:vertical;min-height:100px; }
+        .a-submit{ width:100%;padding:16px;background:var(--accent);color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.2s; }
+        .a-submit:hover{ filter:brightness(0.9); }
+        .a-contact-info h3{ font-size:24px;font-weight:800;margin-bottom:16px; }
+        .a-contact-info > p{ color:#475569;font-size:15px;margin-bottom:24px;line-height:1.7; }
+        .a-info-item{ display:flex;align-items:center;gap:12px;padding:10px 0;font-size:15px; }
+        .a-info-icon{ width:40px;height:40px;border-radius:12px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0; }
+        .a-map{ width:100%;height:240px;border:0;border-radius:16px;margin-top:24px; }
+
+        /* Newsletter */
+        .newsletter{ background:var(--bg);border-radius:24px;padding:48px;text-align:center;margin-top:48px; }
+        .newsletter h3{ font-size:22px;font-weight:800;margin-bottom:8px; }
+        .newsletter p{ color:#64748b;font-size:15px;margin-bottom:24px; }
+        .nl-form{ display:flex;gap:10px;max-width:450px;margin:0 auto; }
+        .nl-form input{ flex:1;padding:14px 18px;border:1.5px solid #ddd;border-radius:12px;font-family:inherit;font-size:14px;outline:none; }
+        .nl-form button{ padding:14px 28px;background:var(--accent);color:#fff;border:none;border-radius:12px;font-weight:700;cursor:pointer; }
+
+        /* Footer Advanced */
+        .a-footer{ background:#0f172a;color:#fff;padding:60px 0 24px; }
+        .a-footer-grid{ display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px; }
+        .a-footer-brand .logo{ font-size:22px;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px; }
+        .a-footer-brand p{ font-size:14px;color:rgba(255,255,255,0.5);line-height:1.6; }
+        .a-footer-col h4{ font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;color:rgba(255,255,255,0.4); }
+        .a-footer-col a{ display:block;font-size:14px;color:rgba(255,255,255,0.6);padding:4px 0;transition:color 0.2s; }
+        .a-footer-col a:hover{ color:#fff; }
+        .a-footer-bottom{ border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;text-align:center;font-size:13px;color:rgba(255,255,255,0.3); }
+
+        @media(max-width:768px){
+            .a-links,.a-nav-actions{ display:none; }
+            .a-features,.a-products,.a-testimonials,.a-blog{ grid-template-columns:1fr; }
+            .a-contact,.a-footer-grid{ grid-template-columns:1fr; }
+            .a-about{ grid-template-columns:1fr; }
+            .a-hero{ min-height:70vh; }
+            .a-input-row{ grid-template-columns:1fr; }
+            .nl-form{ flex-direction:column; }
+        }
+
+        /* FAQ Toggle Script Style */
+        .faq-item { cursor:pointer; }
+    </style>
+</head>
+<body>
+    <div class="demo-banner">
+        📦 This is an ADVANCED tier demo — <a href="../../../brochures/dark-stores.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
+    </div>
+
+    <nav class="a-nav">
+        <div class="container">
+            <div class="a-logo">📦 Dark Store</div>
+            <div class="a-links">
+                <a href="#features">Features</a>
+                <a href="#products">Products</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#blog">Blog</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="a-nav-actions">
+                <a href="#contact" class="a-cta">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="a-hero">
+        <div class="a-hero-bg">
+            <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=80" alt="Dark Store">
+        </div>
+        <div class="container a-hero-content">
+            <div class="a-hero-badge"><span class="dot"></span> Now Open — Visit Today!</div>
+            <h1>Hyperlocal Delivery, Lightning Fast</h1>
+            <p>A micro-fulfillment center designed for lightning-fast hyperlocal delivery. Order online, get it at your doorstep in minutes....</p>
+            <div class="a-hero-btns">
+                <a href="#products" class="btn-a primary">Explore Products</a>
+                <a href="#contact" class="btn-a secondary">Book Appointment</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="a-section" id="features">
+        <div class="container">
+            <div class="a-header">
+                <div class="a-tag">Why Choose Us</div>
+                <h2>What Makes Us Special</h2>
+                <p>Reasons customers love shopping with us</p>
+            </div>
+            <div class="a-features">
+                <div class="a-feature">
+                    <div class="icon">⭐</div>
+                    <h3>Premium Quality</h3>
+                    <p>We source only the finest products to ensure you get the best quality every single time.</p>
+                </div>
+                <div class="a-feature">
+                    <div class="icon">🚀</div>
+                    <h3>Fast Service</h3>
+                    <p>Quick and efficient — we value your time and ensure a smooth, speedy experience.</p>
+                </div>
+                <div class="a-feature">
+                    <div class="icon">💰</div>
+                    <h3>Best Prices</h3>
+                    <p>Competitive pricing without compromising quality. Get the best value for your money.</p>
+                </div>
+                <div class="a-feature">
+                    <div class="icon">🤝</div>
+                    <h3>Expert Advice</h3>
+                    <p>Our knowledgeable staff is always ready to help you make the right choice.</p>
+                </div>
+                <div class="a-feature">
+                    <div class="icon">🔒</div>
+                    <h3>Trusted &amp; Reliable</h3>
+                    <p>Years of serving the community with honesty and integrity. Your trust is our foundation.</p>
+                </div>
+                <div class="a-feature">
+                    <div class="icon">📦</div>
+                    <h3>Home Delivery</h3>
+                    <p>Can't visit? No worries! We deliver right to your doorstep within Ranchi city limits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="a-section alt" id="products">
+        <div class="container">
+            <div class="a-header">
+                <div class="a-tag">Our Collection</div>
+                <h2>Products &amp; Services</h2>
+                <p>Explore our wide range of offerings</p>
+            </div>
+            <div class="a-products">
+                <div class="a-prod">
+                    <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80" alt="10-Min Groceries" loading="lazy">
+                    <div class="a-prod-body">
+                        <h3>10-Min Groceries</h3>
+                        <p>Top quality 10-min groceries for all your needs</p>
+                    </div>
+                </div><div class="a-prod">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&q=80" alt="Fresh Produce" loading="lazy">
+                    <div class="a-prod-body">
+                        <h3>Fresh Produce</h3>
+                        <p>Top quality fresh produce for all your needs</p>
+                    </div>
+                </div><div class="a-prod">
+                    <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&q=80" alt="Snacks & Beverages" loading="lazy">
+                    <div class="a-prod-body">
+                        <h3>Snacks & Beverages</h3>
+                        <p>Top quality snacks & beverages for all your needs</p>
+                    </div>
+                </div><div class="a-prod">
+                    <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=600&q=80" alt="Personal Care" loading="lazy">
+                    <div class="a-prod-body">
+                        <h3>Personal Care</h3>
+                        <p>Top quality personal care for all your needs</p>
+                    </div>
+                </div><div class="a-prod">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80" alt="Pet Supplies" loading="lazy">
+                    <div class="a-prod-body">
+                        <h3>Pet Supplies</h3>
+                        <p>Top quality pet supplies for all your needs</p>
+                    </div>
+                </div><div class="a-prod">
+                    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=80" alt="Medicine Delivery" loading="lazy">
+                    <div class="a-prod-body">
+                        <h3>Medicine Delivery</h3>
+                        <p>Top quality medicine delivery for all your needs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="a-section" id="testimonials">
+        <div class="container">
+            <div class="a-header">
+                <div class="a-tag">Testimonials</div>
+                <h2>Loved by Customers</h2>
+                <p>What people are saying about us</p>
+            </div>
+            <div class="a-testimonials">
+                <div class="a-testi">
+                    <div class="quote">"</div>
+                    <div class="stars">★★★★★</div>
+                    <p>Absolutely the best dark store in Ranchi! The quality is unmatched and the staff goes above and beyond to help.</p>
+                    <div class="author">
+                        <div class="avatar">R</div>
+                        <div class="author-info"><strong>Rahul S.</strong><span>Regular Customer</span></div>
+                    </div>
+                </div>
+                <div class="a-testi">
+                    <div class="quote">"</div>
+                    <div class="stars">★★★★★</div>
+                    <p>Been coming here for years. Consistent quality, fair prices, and excellent customer service. Highly recommended!</p>
+                    <div class="author">
+                        <div class="avatar">P</div>
+                        <div class="author-info"><strong>Priya M.</strong><span>Loyal Customer</span></div>
+                    </div>
+                </div>
+                <div class="a-testi">
+                    <div class="quote">"</div>
+                    <div class="stars">★★★★☆</div>
+                    <p>Great selection and the store is always well-organized. The home delivery option is a game-changer!</p>
+                    <div class="author">
+                        <div class="avatar">A</div>
+                        <div class="author-info"><strong>Amit K.</strong><span>Verified Buyer</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="a-section alt" id="blog">
+        <div class="container">
+            <div class="a-header">
+                <div class="a-tag">Blog</div>
+                <h2>Latest Updates</h2>
+                <p>Tips, news, and insights from our team</p>
+            </div>
+            <div class="a-blog">
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80" alt="Blog" loading="lazy">
+                    <div class="blog-body">
+                        <div class="date">March 15, 2026</div>
+                        <h3>How to Choose the Best 10-Min Groceries for Your Needs</h3>
+                        <p>A comprehensive guide to making smart choices and getting the best value...</p>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&q=80" alt="Blog" loading="lazy">
+                    <div class="blog-body">
+                        <div class="date">March 8, 2026</div>
+                        <h3>Top 5 Trends in Retail Formats & Digital Commerce for 2026</h3>
+                        <p>Stay ahead of the curve with these emerging trends in the industry...</p>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&q=80" alt="Blog" loading="lazy">
+                    <div class="blog-body">
+                        <div class="date">February 28, 2026</div>
+                        <h3>Customer Spotlight: Why Local Businesses Matter</h3>
+                        <p>Hear from our customers about what makes shopping local so special...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="a-section" id="faq">
+        <div class="container">
+            <div class="a-header">
+                <div class="a-tag">FAQ</div>
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions</p>
+            </div>
+            <div class="a-faq">
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-q">What are your operating hours? <span>+</span></div>
+                    <div class="faq-a">We're open Monday to Saturday, 9:00 AM to 9:00 PM. Sundays by appointment only.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-q">Do you offer home delivery? <span>+</span></div>
+                    <div class="faq-a">Yes! We offer free delivery within 5km of our store for orders above ₹500. Additional charges apply for farther distances.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-q">Can I return or exchange products? <span>+</span></div>
+                    <div class="faq-a">We accept returns and exchanges within 7 days of purchase with the original receipt. Products must be in their original condition.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-q">Do you accept online payments? <span>+</span></div>
+                    <div class="faq-a">Yes, we accept UPI (GPay, PhonePe, Paytm), credit/debit cards, and of course, cash.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-q">How can I contact you for bulk orders? <span>+</span></div>
+                    <div class="faq-a">For bulk orders, please send us an email at info@example.com. We offer special rates for wholesale buyers.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="a-cta-section">
+        <h2>Ready to Experience the Best?</h2>
+        <p>Visit us today or book an appointment — we'd love to serve you!</p>
+        <a href="#contact" class="a-cta-btn">Contact Us Now</a>
+    </section>
+
+    <section class="a-section" id="contact">
+        <div class="container">
+            <div class="a-header">
+                <div class="a-tag">Get in Touch</div>
+                <h2>Contact Us</h2>
+                <p>We're here to help — reach out anytime</p>
+            </div>
+            <div class="a-contact">
+                <div class="a-contact-form">
+                    <h3>Send a Message</h3>
+                    <div class="a-input-row">
+                        <input class="a-input" type="text" placeholder="Full Name" required>
+                        <input class="a-input" type="email" placeholder="Email Address" required>
+                    </div>
+                    <select class="a-input">
+                        <option>Select Service</option>
+                        <option>10-Min Groceries</option><option>Fresh Produce</option><option>Snacks & Beverages</option><option>Personal Care</option><option>Pet Supplies</option><option>Medicine Delivery</option>
+                    </select>
+                    <textarea class="a-input" placeholder="Your Message" rows="4"></textarea>
+                    <button class="a-submit" type="button" onclick="alert('Thank you! We will contact you shortly!')">Send Message</button>
+                </div>
+                <div class="a-contact-info">
+                    <h3>Dark Store</h3>
+                    <p>A micro-fulfillment center designed for lightning-fast hyperlocal delivery. Order online, get it at your doorstep in min...</p>
+                    <div class="a-info-item">
+                        <div class="a-info-icon">📍</div>
+                        <div>Main Road, Ranchi<br>Jharkhand - 834001</div>
+                    </div>
+                    <div class="a-info-item">
+                        <div class="a-info-icon"></div>
+                        <div>info@example.com</div>
+                    </div>
+                    <div class="a-info-item">
+                        <div class="a-info-icon">🕐</div>
+                        <div>Mon – Sat: 9 AM – 9 PM</div>
+                    </div>
+                    <iframe class="a-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117235.18759521538!2d85.2493468!3d23.3440997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e104aa5db7dd%3A0xdc09d49d6fee60df!2sRanchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="newsletter">
+                <h3>Subscribe to Our Newsletter</h3>
+                <p>Get updates on new arrivals, offers, and tips straight to your inbox.</p>
+                <div class="nl-form">
+                    <input type="email" placeholder="your@email.com">
+                    <button type="button" onclick="alert('Subscribed! Thank you.')">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="a-footer">
+        <div class="container">
+            <div class="a-footer-grid">
+                <div class="a-footer-brand">
+                    <div class="logo">📦 Dark Store</div>
+                    <p>A micro-fulfillment center designed for lightning-fast hyperlocal delivery. Order online, get it at your doorstep in min...</p>
+                </div>
+                <div class="a-footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="#features">Why Us</a>
+                    <a href="#products">Products</a>
+                    <a href="#testimonials">Reviews</a>
+                    <a href="#blog">Blog</a>
+                </div>
+                <div class="a-footer-col">
+                    <h4>Services</h4>
+                    <a href="#products">10-Min Groceries</a><a href="#products">Fresh Produce</a><a href="#products">Snacks & Beverages</a><a href="#products">Personal Care</a>
+                </div>
+                <div class="a-footer-col">
+                    <h4>Contact</h4>
+                    <a href="#">info@example.com</a>
+                    <a href="#">Ranchi, Jharkhand</a>
+                </div>
+            </div>
+            <div class="a-footer-bottom">
+                &copy; 2026 Dark Store. All rights reserved. | Website by <a href="../../../index.html" style="color:rgba(255,255,255,0.6);">SA-Flow</a> | <a href="https://saflow.app" style="color:rgba(255,255,255,0.4)">saflow.app</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
