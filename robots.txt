@@ -1,9 +1,9 @@
-# SA-Flow — saflow.app
+# SA-Flow — atul0016.github.io/Web4All
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://saflow.app/sitemap.xml
+Sitemap: https://atul0016.github.io/Web4All/sitemap.xml
 
 # Crawl-delay (optional, respected by some bots)
 Crawl-delay: 1
