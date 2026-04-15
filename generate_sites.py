@@ -831,9 +831,19 @@ SHOPS = [
 # HTML TEMPLATES
 # ============================================================
 
+def truncate_desc(text, max_len=155):
+    """Truncate text at word boundary, adding ellipsis if needed."""
+    if len(text) <= max_len:
+        return text
+    truncated = text[:max_len].rsplit(' ', 1)[0]
+    return truncated.rstrip('.,;:!') + '...'
+
+
 def brochure_template(shop):
     """Generate a brochure page for a shop type — shows 3 tier previews."""
     c = shop["colors"]
+    desc = truncate_desc(shop["desc"])
+    schema_json = '{"@context":"https://schema.org","@type":"Service","name":"' + shop["name"] + ' Website Design","description":"' + shop["desc"].replace('"', '\\"') + '","provider":{"@type":"Organization","name":"SA-Flow","url":"https://saflow.app"},"areaServed":"India","hasOfferCatalog":{"@type":"OfferCatalog","name":"Website Packages","itemListElement":[{"@type":"Offer","name":"Basic","price":"1500","priceCurrency":"INR"},{"@type":"Offer","name":"Medium","price":"2500","priceCurrency":"INR"},{"@type":"Offer","name":"Advanced","price":"5000","priceCurrency":"INR"}]}}'
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1071,22 +1081,25 @@ def brochure_template(shop):
 def basic_template(shop):
     """Generate a basic single-page example website."""
     c = shop["colors"]
+    meta_desc = truncate_desc(shop["about"])
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{shop["name"]} — {shop["tagline"]}</title>
-    <meta name="description" content="{shop['about'][:160]}">
+    <meta name="description" content="{meta_desc}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://saflow.app/examples/{shop['slug']}/basic/">
     <meta property="og:title" content="{shop['name']} — {shop['tagline']}">
-    <meta property="og:description" content="{shop['about'][:160]}">
+    <meta property="og:description" content="{meta_desc}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://saflow.app/examples/{shop['slug']}/basic/">
+    <meta property="og:image" content="https://saflow.app/og-image.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{shop['name']} — Basic Website Demo">
-    <meta name="twitter:description" content="{shop['about'][:160]}">
+    <meta name="twitter:description" content="{meta_desc}">
+    <meta name="twitter:image" content="https://saflow.app/og-image.png">
     <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1188,22 +1201,25 @@ def basic_template(shop):
 def medium_template(shop):
     """Generate a medium multi-section example website."""
     c = shop["colors"]
+    meta_desc = truncate_desc(shop["about"])
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{shop["name"]} — {shop["tagline"]}</title>
-    <meta name="description" content="{shop['about'][:160]}">
+    <meta name="description" content="{meta_desc}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://saflow.app/examples/{shop['slug']}/medium/">
     <meta property="og:title" content="{shop['name']} — {shop['tagline']}">
-    <meta property="og:description" content="{shop['about'][:160]}">
+    <meta property="og:description" content="{meta_desc}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://saflow.app/examples/{shop['slug']}/medium/">
+    <meta property="og:image" content="https://saflow.app/og-image.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{shop['name']} — Medium Website Demo">
-    <meta name="twitter:description" content="{shop['about'][:160]}">
+    <meta name="twitter:description" content="{meta_desc}">
+    <meta name="twitter:image" content="https://saflow.app/og-image.png">
     <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1450,22 +1466,25 @@ def medium_template(shop):
 def advanced_template(shop):
     """Generate an advanced full-featured example website."""
     c = shop["colors"]
+    meta_desc = truncate_desc(shop["about"])
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{shop["name"]} — {shop["tagline"]}</title>
-    <meta name="description" content="{shop['about'][:160]}">
+    <meta name="description" content="{meta_desc}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://saflow.app/examples/{shop['slug']}/advanced/">
     <meta property="og:title" content="{shop['name']} — {shop['tagline']}">
-    <meta property="og:description" content="{shop['about'][:160]}">
+    <meta property="og:description" content="{meta_desc}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://saflow.app/examples/{shop['slug']}/advanced/">
+    <meta property="og:image" content="https://saflow.app/og-image.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{shop['name']} — Advanced Website Demo">
-    <meta name="twitter:description" content="{shop['about'][:160]}">
+    <meta name="twitter:description" content="{meta_desc}">
+    <meta name="twitter:image" content="https://saflow.app/og-image.png">
     <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

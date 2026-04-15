@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SA-Flow — Professional Websites for Every Business | Ranchi, India</title>
     <meta name="description" content="Professional website design starting at ₹1,500. SA-Flow builds stunning websites for every kind of business — from grocery stores to e-commerce platforms. Based in Ranchi, India.">
-    <meta name="keywords" content="website design ranchi, web development jharkhand, business website india, SA-Flow, cheap website design">
+    <meta name="keywords" content="website design ranchi, web development jharkhand, business website india, SA-Flow, affordable website design, website for shops, website for grocery store, website for bakery, website for salon, website design india, small business website, ecommerce website ranchi, web developer ranchi, custom website design, responsive website india">
     <meta property="og:title" content="SA-Flow — Websites for Every Business">
     <meta property="og:description" content="Professional website design starting at ₹1,500. 38+ business categories covered.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://saflow.app">
-    <meta property="og:image" content="https://saflow.app/favicon.svg">
+    <meta property="og:image" content="https://saflow.app/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="SA-Flow">
     <meta property="og:locale" content="en_IN">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SA-Flow — Websites for Every Business">
     <meta name="twitter:description" content="Professional website design starting at ₹1,500. 38+ business categories covered.">
-    <meta name="twitter:image" content="https://saflow.app/favicon.svg">
+    <meta name="twitter:image" content="https://saflow.app/og-image.png">
     <meta name="theme-color" content="#0145F2">
     <meta name="robots" content="index, follow">
     <meta name="author" content="SA-Flow">
@@ -93,7 +95,44 @@
         "@type": "WebSite",
         "name": "SA-Flow",
         "url": "https://saflow.app",
-        "description": "Professional website design for every business category"
+        "description": "Professional website design for every business category",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://saflow.app/#solutions",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://saflow.app/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://saflow.app/#solutions"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Pricing",
+                "item": "https://saflow.app/#pricing"
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Contact",
+                "item": "https://saflow.app/#contact"
+            }
+        ]
     }
     </script>
 </head>
@@ -102,8 +141,8 @@
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="container nav-container">
-            <a href="/" class="logo">
-                <span class="logo-icon">⚡</span>
+            <a href="/" class="logo" aria-label="SA-Flow Home">
+                <span class="logo-icon" aria-hidden="true">⚡</span>
                 <span class="logo-text">SA-Flow</span>
             </a>
             <div class="nav-links" id="navLinks">
@@ -112,7 +151,7 @@
                 <a href="#process">How It Works</a>
                 <a href="#contact">Contact</a>
             </div>
-            <a href="#contact" class="btn btn-primary btn-sm nav-cta">Get Started</a>
+            <a href="#contact" class="btn btn-primary btn-sm nav-cta" aria-label="Get started — contact us">Get Started</a>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
