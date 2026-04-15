@@ -841,6 +841,15 @@ def brochure_template(shop):
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{shop["name"]} Website Design — SA-Flow</title>
     <meta name="description" content="{shop["desc"]}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://saflow.app/brochures/{shop['slug']}.html">
+    <meta property="og:title" content="{shop['name']} Website Design — SA-Flow">
+    <meta property="og:description" content="{shop['desc']}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://saflow.app/brochures/{shop['slug']}.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{shop['name']} Website Design — SA-Flow">
+    <meta name="twitter:description" content="{shop['desc']}">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1068,6 +1077,16 @@ def basic_template(shop):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{shop["name"]} — {shop["tagline"]}</title>
+    <meta name="description" content="{shop['about'][:160]}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://saflow.app/examples/{shop['slug']}/basic/">
+    <meta property="og:title" content="{shop['name']} — {shop['tagline']}">
+    <meta property="og:description" content="{shop['about'][:160]}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://saflow.app/examples/{shop['slug']}/basic/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{shop['name']} — Basic Website Demo">
+    <meta name="twitter:description" content="{shop['about'][:160]}">
     <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1175,6 +1194,16 @@ def medium_template(shop):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{shop["name"]} — {shop["tagline"]}</title>
+    <meta name="description" content="{shop['about'][:160]}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://saflow.app/examples/{shop['slug']}/medium/">
+    <meta property="og:title" content="{shop['name']} — {shop['tagline']}">
+    <meta property="og:description" content="{shop['about'][:160]}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://saflow.app/examples/{shop['slug']}/medium/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{shop['name']} — Medium Website Demo">
+    <meta name="twitter:description" content="{shop['about'][:160]}">
     <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1427,7 +1456,16 @@ def advanced_template(shop):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{shop["name"]} — {shop["tagline"]}</title>
-    <meta name="description" content="{shop["about"][:160]}">
+    <meta name="description" content="{shop['about'][:160]}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://saflow.app/examples/{shop['slug']}/advanced/">
+    <meta property="og:title" content="{shop['name']} — {shop['tagline']}">
+    <meta property="og:description" content="{shop['about'][:160]}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://saflow.app/examples/{shop['slug']}/advanced/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{shop['name']} — Advanced Website Demo">
+    <meta name="twitter:description" content="{shop['about'][:160]}">
     <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

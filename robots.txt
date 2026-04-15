@@ -1,0 +1,9 @@
+# SA-Flow — saflow.app
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://saflow.app/sitemap.xml
+
+# Crawl-delay (optional, respected by some bots)
+Crawl-delay: 1

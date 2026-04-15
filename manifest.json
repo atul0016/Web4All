@@ -1,0 +1,16 @@
+{
+  "name": "SA-Flow — Professional Websites for Every Business",
+  "short_name": "SA-Flow",
+  "description": "Professional website design starting at ₹1,500. SA-Flow builds stunning websites for 38+ business categories.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#EDF1F5",
+  "theme_color": "#0145F2",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
