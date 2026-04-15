@@ -839,6 +839,35 @@ def truncate_desc(text, max_len=155):
     return truncated.rstrip('.,;:!') + '...'
 
 
+def get_related_shops(shop, max_count=4):
+    """Return up to max_count other shops from the same category."""
+    return [s for s in SHOPS if s["category"] == shop["category"] and s["slug"] != shop["slug"]][:max_count]
+
+
+def related_links_html(shop):
+    """Generate HTML for related solutions cross-links."""
+    related = get_related_shops(shop)
+    if not related:
+        return ""
+    cards = ""
+    for r in related:
+        cards += f'''
+            <a href="{r["slug"]}.html" class="related-card" style="border-left:3px solid {r["colors"]["accent"]}; padding:12px 16px; text-decoration:none; color:inherit; border-radius:8px; background:#f9f9f9;">
+                <span style="font-size:1.3rem;">{r["emoji"]}</span>
+                <span style="font-weight:600; color:{r["colors"]["accent"]};">{r["name"]}</span>
+            </a>'''
+    return f'''
+    <section style="padding:48px 0; background:#fff;">
+        <div class="container">
+            <h3 style="text-align:center; margin-bottom:24px; font-size:1.3rem; color:#333;">Related Solutions in {shop["category"]}</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; max-width:800px; margin:0 auto;">
+                {cards}
+            </div>
+            <p style="text-align:center; margin-top:20px;"><a href="../index.html#solutions" style="color:#555; font-size:0.95rem;">View all 38 business types &rarr;</a></p>
+        </div>
+    </section>'''
+
+
 def brochure_template(shop):
     """Generate a brochure page for a shop type — shows 3 tier previews."""
     c = shop["colors"]
@@ -849,17 +878,19 @@ def brochure_template(shop):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{shop["name"]} Website Design — SA-Flow</title>
+    <title>{shop["name"]} Website Design Starting ₹1,500 | SA-Flow India</title>
     <meta name="description" content="{shop["desc"]}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://atul0016.github.io/Web4All/brochures/{shop['slug']}.html">
-    <meta property="og:title" content="{shop['name']} Website Design — SA-Flow">
+    <meta property="og:title" content="{shop['name']} Website Design Starting ₹1,500 | SA-Flow">
     <meta property="og:description" content="{shop['desc']}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://atul0016.github.io/Web4All/brochures/{shop['slug']}.html">
+    <meta property="og:image" content="https://atul0016.github.io/Web4All/og-image.png">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{shop['name']} Website Design — SA-Flow">
+    <meta name="twitter:title" content="{shop['name']} Website Design Starting ₹1,500 | SA-Flow">
     <meta name="twitter:description" content="{shop['desc']}">
+    <meta name="twitter:image" content="https://atul0016.github.io/Web4All/og-image.png">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1068,6 +1099,8 @@ def brochure_template(shop):
         <p>Contact us today and get started in under 48 hours.</p>
         <a href="../index.html#contact" class="cta-btn">Get Started — From ₹1,500</a>
     </section>
+
+    {related_links_html(shop)}
 
     <footer class="b-footer">
         <div class="container">

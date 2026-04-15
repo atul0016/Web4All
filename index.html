@@ -29,8 +29,12 @@
     <link rel="manifest" href="manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="dns-prefetch" href="https://bloomnest-mu.vercel.app">
+    <link rel="dns-prefetch" href="https://indian-erp.vercel.app">
+    <link rel="dns-prefetch" href="https://atul0016.github.io">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -137,6 +141,54 @@
                 "position": 5,
                 "name": "Contact",
                 "item": "https://atul0016.github.io/Web4All/#contact"
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How much does a business website cost in India?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "SA-Flow offers professional business websites starting at just ₹1,500 for a basic single-page site. Medium multi-section websites cost ₹2,500 and advanced full-featured websites with animations, galleries, and blog sections cost ₹5,000. Domain and hosting are charged separately."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does it take to build a business website?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Basic websites are delivered within 2-3 days, medium websites take 4-5 days, and advanced websites are completed within 7-10 days. The timeline starts after content and requirements are finalized."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you build websites for all types of businesses?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! SA-Flow specializes in 38+ business categories across 8 industry groups including grocery stores, bakeries, salons, boutiques, pharmacies, electronics showrooms, restaurants, and more. Each website comes with industry-specific design, content, and features."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you also build custom software and SaaS products?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, beyond websites we build production-ready SaaS products and enterprise software. Our products include BloomNest (childcare management), SA ERP (enterprise resource planning for Indian businesses), and ParkManager (smart parking management). Contact us for custom software development."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is included in the website price?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "All plans include responsive mobile-friendly design, SEO-optimized pages, Google Fonts, contact form integration, and basic on-page SEO. Medium and Advanced plans add features like image galleries, testimonials, animations, blog sections, and WhatsApp integration. Domain registration and hosting fees are separate."
+                }
             }
         ]
     }
@@ -518,7 +570,10 @@
                 <!-- BloomNest -->
                 <a href="https://bloomnest-mu.vercel.app/" target="_blank" rel="noopener noreferrer" class="product-card" data-animate>
                     <div class="product-img">
-                        <img src="screenshots/bloomnest.png" alt="BloomNest childcare management dashboard showing staff scheduling, attendance tracking and analytics" width="600" height="370" loading="lazy">
+                        <picture>
+                            <source srcset="screenshots/bloomnest.webp" type="image/webp">
+                            <img src="screenshots/bloomnest.png" alt="BloomNest childcare management dashboard showing staff scheduling, attendance tracking and analytics" width="600" height="370" loading="lazy">
+                        </picture>
                         <span class="product-badge">SaaS</span>
                     </div>
                     <div class="product-info">
@@ -539,7 +594,10 @@
                 <!-- SA ERP -->
                 <a href="https://indian-erp.vercel.app/" target="_blank" rel="noopener noreferrer" class="product-card" data-animate>
                     <div class="product-img">
-                        <img src="screenshots/saerp.png" alt="SA ERP enterprise resource planning dashboard with finance, inventory, sales and GST modules" width="600" height="370" loading="lazy">
+                        <picture>
+                            <source srcset="screenshots/saerp.webp" type="image/webp">
+                            <img src="screenshots/saerp.png" alt="SA ERP enterprise resource planning dashboard with finance, inventory, sales and GST modules" width="600" height="370" loading="lazy">
+                        </picture>
                         <span class="product-badge">Enterprise</span>
                     </div>
                     <div class="product-info">
@@ -560,7 +618,10 @@
                 <!-- ParkManager -->
                 <a href="https://atul0016.github.io/park-manager/" target="_blank" rel="noopener noreferrer" class="product-card" data-animate>
                     <div class="product-img">
-                        <img src="screenshots/parkmanager.png" alt="ParkManager smart parking SaaS with real-time slot maps and vehicle tracking" width="600" height="370" loading="lazy">
+                        <picture>
+                            <source srcset="screenshots/parkmanager.webp" type="image/webp">
+                            <img src="screenshots/parkmanager.png" alt="ParkManager smart parking SaaS with real-time slot maps and vehicle tracking" width="600" height="370" loading="lazy">
+                        </picture>
                         <span class="product-badge">SaaS</span>
                     </div>
                     <div class="product-info">
@@ -979,6 +1040,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
