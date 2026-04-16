@@ -878,6 +878,8 @@ def brochure_template(shop):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G7QH2GJMM0"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-G7QH2GJMM0');</script>
     <title>{shop["name"]} Website Design Starting ₹1,500 | SA-Flow India</title>
     <meta name="description" content="{shop["desc"]}">
     <meta name="robots" content="index, follow">
@@ -1120,6 +1122,8 @@ def basic_template(shop):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G7QH2GJMM0"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-G7QH2GJMM0');</script>
     <title>{shop["name"]} — {shop["tagline"]}</title>
     <meta name="description" content="{meta_desc}">
     <meta name="robots" content="index, follow">
@@ -1240,6 +1244,8 @@ def medium_template(shop):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G7QH2GJMM0"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-G7QH2GJMM0');</script>
     <title>{shop["name"]} — {shop["tagline"]}</title>
     <meta name="description" content="{meta_desc}">
     <meta name="robots" content="index, follow">
@@ -1505,6 +1511,8 @@ def advanced_template(shop):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G7QH2GJMM0"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-G7QH2GJMM0');</script>
     <title>{shop["name"]} — {shop["tagline"]}</title>
     <meta name="description" content="{meta_desc}">
     <meta name="robots" content="index, follow">
