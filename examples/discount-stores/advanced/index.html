@@ -29,10 +29,21 @@
         body{ font-family:'Inter',-apple-system,sans-serif;color:var(--text);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased; }
         a{ color:inherit;text-decoration:none; }
         .container{ max-width:1200px;margin:0 auto;padding:0 24px; }
+        i[data-lucide]{display:inline-block;width:1.15em;height:1.15em;position:relative;flex-shrink:0;}
+        i[data-lucide]::before,i[data-lucide]::after{content:"";position:absolute;inset:18%;border:2px solid currentColor;border-radius:42% 58% 55% 45%;}
+        i[data-lucide]::after{inset:42% 16% auto 16%;height:2px;border:0;background:currentColor;border-radius:99px;transform:rotate(-25deg);}
+        svg.lucide{display:block;}
 
         /* Demo Banner */
         .demo-banner{ background:var(--accent);color:#fff;text-align:center;padding:10px;font-size:12px;font-weight:600; }
         .demo-banner a{ color:#fff;text-decoration:underline; }
+        .inline-icon,.shop-icon,.feature-icon,.info-lucide{ display:inline-flex;align-items:center;justify-content:center;flex-shrink:0; }
+        .inline-icon{ width:16px;height:16px;margin-right:6px;vertical-align:-3px; }
+        .inline-icon svg{ width:16px;height:16px; }
+        .shop-icon{ width:34px;height:34px;border-radius:10px;background:var(--accent-light);color:var(--accent); }
+        .shop-icon svg{ width:19px;height:19px;stroke-width:2; }
+        .feature-icon svg{ width:24px;height:24px;stroke-width:1.9; }
+        .info-lucide svg{ width:20px;height:20px;stroke-width:2; }
 
         /* Nav */
         .a-nav{ background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.04);position:sticky;top:0;z-index:100; }
@@ -73,7 +84,7 @@
         .a-features{ display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
         .a-feature{ background:#fff;border:1px solid #f0f0f0;border-radius:20px;padding:32px;transition:all 0.3s; }
         .a-feature:hover{ transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.06);border-color:#ddd; }
-        .a-feature .icon{ width:48px;height:48px;border-radius:14px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px; }
+        .a-feature .icon{ width:48px;height:48px;border-radius:14px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--accent); }
         .a-feature h3{ font-size:18px;font-weight:700;margin-bottom:6px; }
         .a-feature p{ font-size:14px;color:#64748b;line-height:1.6; }
 
@@ -91,7 +102,8 @@
         .a-testimonials{ display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
         .a-testi{ background:#fff;border:1px solid #eee;border-radius:20px;padding:32px;position:relative; }
         .a-testi .quote{ font-size:48px;color:var(--accent);opacity:0.15;line-height:1;position:absolute;top:16px;right:24px; }
-        .a-testi .stars{ color:#f59e0b;font-size:14px;margin-bottom:12px; }
+        .a-testi .stars{ display:flex;gap:2px;color:#f59e0b;margin-bottom:12px; }
+        .a-testi .stars i{ width:15px;height:15px;fill:currentColor; }
         .a-testi p{ font-size:15px;color:#475569;line-height:1.7;margin-bottom:16px; }
         .a-testi .author{ display:flex;align-items:center;gap:10px; }
         .a-testi .avatar{ width:38px;height:38px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--accent); }
@@ -138,7 +150,7 @@
         .a-contact-info h3{ font-size:24px;font-weight:800;margin-bottom:16px; }
         .a-contact-info > p{ color:#475569;font-size:15px;margin-bottom:24px;line-height:1.7; }
         .a-info-item{ display:flex;align-items:center;gap:12px;padding:10px 0;font-size:15px; }
-        .a-info-icon{ width:40px;height:40px;border-radius:12px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0; }
+        .a-info-icon{ width:40px;height:40px;border-radius:12px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0; }
         .a-map{ width:100%;height:240px;border:0;border-radius:16px;margin-top:24px; }
 
         /* Newsletter */
@@ -175,12 +187,12 @@
 </head>
 <body>
     <div class="demo-banner">
-        💰 This is an ADVANCED tier demo — <a href="../../../brochures/discount-stores.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
+        <span class="inline-icon" aria-hidden="true"><i data-lucide="badge-indian-rupee"></i></span> This is an ADVANCED tier demo — <a href="../../../brochures/discount-stores.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
     </div>
 
     <nav class="a-nav">
         <div class="container">
-            <div class="a-logo">💰 Discount Store</div>
+            <div class="a-logo"><span class="shop-icon" aria-hidden="true"><i data-lucide="badge-indian-rupee"></i></span> Discount Store</div>
             <div class="a-links">
                 <a href="#features">Features</a>
                 <a href="#products">Products</a>
@@ -219,32 +231,32 @@
             </div>
             <div class="a-features">
                 <div class="a-feature">
-                    <div class="icon">⭐</div>
+                    <div class="icon"><span class="feature-icon"><i data-lucide="badge-check"></i></span></div>
                     <h3>Premium Quality</h3>
                     <p>We source only the finest products to ensure you get the best quality every single time.</p>
                 </div>
                 <div class="a-feature">
-                    <div class="icon">🚀</div>
+                    <div class="icon"><span class="feature-icon"><i data-lucide="rocket"></i></span></div>
                     <h3>Fast Service</h3>
                     <p>Quick and efficient — we value your time and ensure a smooth, speedy experience.</p>
                 </div>
                 <div class="a-feature">
-                    <div class="icon">💰</div>
+                    <div class="icon"><span class="feature-icon"><i data-lucide="badge-indian-rupee"></i></span></div>
                     <h3>Best Prices</h3>
                     <p>Competitive pricing without compromising quality. Get the best value for your money.</p>
                 </div>
                 <div class="a-feature">
-                    <div class="icon">🤝</div>
+                    <div class="icon"><span class="feature-icon"><i data-lucide="handshake"></i></span></div>
                     <h3>Expert Advice</h3>
                     <p>Our knowledgeable staff is always ready to help you make the right choice.</p>
                 </div>
                 <div class="a-feature">
-                    <div class="icon">🔒</div>
+                    <div class="icon"><span class="feature-icon"><i data-lucide="shield-check"></i></span></div>
                     <h3>Trusted &amp; Reliable</h3>
                     <p>Years of serving the community with honesty and integrity. Your trust is our foundation.</p>
                 </div>
                 <div class="a-feature">
-                    <div class="icon">📦</div>
+                    <div class="icon"><span class="feature-icon"><i data-lucide="package"></i></span></div>
                     <h3>Home Delivery</h3>
                     <p>Can't visit? No worries! We deliver right to your doorstep within Ranchi city limits.</p>
                 </div>
@@ -311,7 +323,7 @@
             <div class="a-testimonials">
                 <div class="a-testi">
                     <div class="quote">"</div>
-                    <div class="stars">★★★★★</div>
+                    <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
                     <p>Absolutely the best discount store in Ranchi! The quality is unmatched and the staff goes above and beyond to help.</p>
                     <div class="author">
                         <div class="avatar">R</div>
@@ -320,7 +332,7 @@
                 </div>
                 <div class="a-testi">
                     <div class="quote">"</div>
-                    <div class="stars">★★★★★</div>
+                    <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
                     <p>Been coming here for years. Consistent quality, fair prices, and excellent customer service. Highly recommended!</p>
                     <div class="author">
                         <div class="avatar">P</div>
@@ -329,7 +341,7 @@
                 </div>
                 <div class="a-testi">
                     <div class="quote">"</div>
-                    <div class="stars">★★★★☆</div>
+                    <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star-half"></i></div>
                     <p>Great selection and the store is always well-organized. The home delivery option is a game-changer!</p>
                     <div class="author">
                         <div class="avatar">A</div>
@@ -439,16 +451,16 @@
                     <h3>Discount Store</h3>
                     <p>The smartest way to shop — quality products at rock-bottom prices. New deals every week, savings on every visit....</p>
                     <div class="a-info-item">
-                        <div class="a-info-icon">📍</div>
+                        <div class="a-info-icon"><span class="info-lucide"><i data-lucide="map-pin"></i></span></div>
                         <div>Main Road, Ranchi<br>Jharkhand - 834001</div>
                     </div>
                     <div class="a-info-item">
-                        <div class="a-info-icon"></div>
+                        <div class="a-info-icon"><span class="info-lucide"><i data-lucide="mail"></i></span></div>
                         <div>info@example.com</div>
                     </div>
                     <div class="a-info-item">
-                        <div class="a-info-icon">🕐</div>
-                        <div>Mon – Sat: 9 AM – 9 PM</div>
+                        <div class="a-info-icon"><span class="info-lucide"><i data-lucide="clock"></i></span></div>
+                        <div>Mon - Sat: 9 AM - 9 PM</div>
                     </div>
                     <iframe class="a-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117235.18759521538!2d85.2493468!3d23.3440997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e104aa5db7dd%3A0xdc09d49d6fee60df!2sRanchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
                 </div>
@@ -469,7 +481,7 @@
         <div class="container">
             <div class="a-footer-grid">
                 <div class="a-footer-brand">
-                    <div class="logo">💰 Discount Store</div>
+                    <div class="logo"><span class="shop-icon" aria-hidden="true"><i data-lucide="badge-indian-rupee"></i></span> Discount Store</div>
                     <p>The smartest way to shop — quality products at rock-bottom prices. New deals every week, savings on every visit....</p>
                 </div>
                 <div class="a-footer-col">
@@ -494,5 +506,13 @@
             </div>
         </div>
     </footer>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        });
+    </script>
 </body>
 </html>

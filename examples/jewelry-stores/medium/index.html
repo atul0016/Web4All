@@ -29,6 +29,10 @@
         body{ font-family:'Inter',-apple-system,sans-serif;color:var(--text);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased; }
         a{ color:inherit;text-decoration:none; }
         .container{ max-width:1100px;margin:0 auto;padding:0 24px; }
+        i[data-lucide]{display:inline-block;width:1.15em;height:1.15em;position:relative;flex-shrink:0;}
+        i[data-lucide]::before,i[data-lucide]::after{content:"";position:absolute;inset:18%;border:2px solid currentColor;border-radius:42% 58% 55% 45%;}
+        i[data-lucide]::after{inset:42% 16% auto 16%;height:2px;border:0;background:currentColor;border-radius:99px;transform:rotate(-25deg);}
+        svg.lucide{display:block;}
 
         /* Demo Banner */
         .demo-banner{ background:var(--accent);color:#fff;text-align:center;padding:8px;font-size:12px;font-weight:600; }
@@ -80,7 +84,8 @@
         .m-reviews{ display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
         .m-review{ background:#fff;border:1px solid #eee;border-radius:16px;padding:24px;transition:all 0.3s; }
         .m-review:hover{ box-shadow:0 8px 20px rgba(0,0,0,0.06); }
-        .m-review .stars{ color:#f59e0b;font-size:16px;margin-bottom:10px; }
+        .m-review .stars{ display:flex;gap:2px;color:#f59e0b;margin-bottom:10px; }
+        .m-review .stars i{ width:16px;height:16px;fill:currentColor; }
         .m-review p{ font-size:14px;color:#475569;margin-bottom:12px;line-height:1.6; }
         .m-review .author{ font-size:13px;font-weight:600; }
 
@@ -122,12 +127,12 @@
 </head>
 <body>
     <div class="demo-banner">
-        💎 This is a MEDIUM tier demo — <a href="../../../brochures/jewelry-stores.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
+        <span class="inline-icon" aria-hidden="true"><i data-lucide="gem"></i></span> This is a MEDIUM tier demo — <a href="../../../brochures/jewelry-stores.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
     </div>
 
     <nav class="m-nav">
         <div class="container">
-            <div class="m-logo">💎 Jewelry Store</div>
+            <div class="m-logo"><span class="shop-icon" aria-hidden="true"><i data-lucide="gem"></i></span> Jewelry Store</div>
             <div class="m-links">
                 <a href="#products">Products</a>
                 <a href="#gallery">Gallery</a>
@@ -233,17 +238,17 @@
             </div>
             <div class="m-reviews">
                 <div class="m-review">
-                    <div class="stars">★★★★★</div>
+                    <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
                     <p>"Excellent quality and great service! Have been a regular customer for over 2 years now. Highly recommended!"</p>
                     <div class="author">— Rahul S.</div>
                 </div>
                 <div class="m-review">
-                    <div class="stars">★★★★★</div>
+                    <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
                     <p>"Best jewelry store in Ranchi! The staff is friendly and prices are very reasonable. Will definitely come back."</p>
                     <div class="author">— Priya M.</div>
                 </div>
                 <div class="m-review">
-                    <div class="stars">★★★★☆</div>
+                    <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star-half"></i></div>
                     <p>"Great variety and quality products. The store is well-organized and clean. Very satisfied with my experience."</p>
                     <div class="author">— Amit K.</div>
                 </div>
@@ -261,9 +266,9 @@
                 <div class="m-contact-info">
                     <h3>Jewelry Store</h3>
                     <p>Visit us at our store or reach out through any of the channels below.</p>
-                    <div class="m-contact-detail">📍 Main Road, Ranchi, Jharkhand - 834001</div>
-                    <div class="m-contact-detail"> info@example.com</div>
-                    <div class="m-contact-detail">🕐 Mon–Sat: 9:00 AM – 9:00 PM</div>
+                    <div class="m-contact-detail"><span class="contact-icon" aria-hidden="true"><i data-lucide="map-pin"></i></span> Main Road, Ranchi, Jharkhand - 834001</div>
+                    <div class="m-contact-detail"><span class="contact-icon" aria-hidden="true"><i data-lucide="mail"></i></span> info@example.com</div>
+                    <div class="m-contact-detail"><span class="contact-icon" aria-hidden="true"><i data-lucide="clock"></i></span> Mon-Sat: 9:00 AM - 9:00 PM</div>
                     <iframe class="m-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117235.18759521538!2d85.2493468!3d23.3440997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e104aa5db7dd%3A0xdc09d49d6fee60df!2sRanchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="m-form">
@@ -280,12 +285,20 @@
     <footer class="m-footer">
         <div class="container">
             <div class="social">
-                <a href="#">📘</a>
-                <a href="#">📸</a>
-                <a href="#">🐦</a>
+                <a href="#" aria-label="Social feed"><span class="social-icon"><i data-lucide="share-2"></i></span></a>
+                <a href="#" aria-label="Photo gallery"><span class="social-icon"><i data-lucide="camera"></i></span></a>
+                <a href="#" aria-label="Messages"><span class="social-icon"><i data-lucide="message-circle"></i></span></a>
             </div>
             <p>&copy; 2026 Jewelry Store. Website designed by <a href="../../../index.html" style="color:rgba(255,255,255,0.5)">SA-Flow</a> | <a href="https://saflow.app" style="color:rgba(255,255,255,0.4)">saflow.app</a></p>
         </div>
     </footer>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        });
+    </script>
 </body>
 </html>

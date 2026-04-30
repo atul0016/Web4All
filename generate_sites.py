@@ -843,6 +843,78 @@ def get_related_shops(shop, max_count=4):
     """Return up to max_count other shops from the same category."""
     return [s for s in SHOPS if s["category"] == shop["category"] and s["slug"] != shop["slug"]][:max_count]
 
+ICON_BY_SLUG = {
+    "kirana-grocery": "shopping-cart",
+    "green-grocers": "leaf",
+    "dairy-booths": "milk",
+    "butcheries-fishmongers": "drumstick",
+    "supermarkets": "warehouse",
+    "convenience-stores": "store",
+    "bakeries": "cake-slice",
+    "cafes-eateries": "coffee",
+    "confectioneries": "candy",
+    "delicatessens": "sandwich",
+    "wine-spirit-shops": "wine",
+    "pharmacies": "pill",
+    "salons-barber": "scissors",
+    "gyms-yoga": "dumbbell",
+    "boutiques": "shirt",
+    "footwear-stores": "footprints",
+    "jewelry-stores": "gem",
+    "tailor-shops": "ruler",
+    "haberdasheries": "scissors-line-dashed",
+    "hardware-stores": "hammer",
+    "furniture-stores": "armchair",
+    "home-goods": "house",
+    "nurseries-garden": "sprout",
+    "electronics-showrooms": "smartphone",
+    "bookstores": "book-open",
+    "stationery-shops": "pencil-ruler",
+    "hobby-craft": "palette",
+    "musical-instruments": "music",
+    "pet-boutiques": "paw-print",
+    "antique-art": "landmark",
+    "laundry-dryclean": "shirt",
+    "repair-shops": "wrench",
+    "print-xerox": "printer",
+    "department-stores": "building-2",
+    "discount-stores": "badge-indian-rupee",
+    "popup-shops": "tent",
+    "dark-stores": "package",
+    "ecommerce-marketplaces": "shopping-bag",
+}
+
+
+def icon_name(shop):
+    """Return a Lucide icon name for a shop type."""
+    return ICON_BY_SLUG.get(shop["slug"], "store")
+
+
+def icon_markup(shop, class_name="brand-icon", label=None):
+    """Generate Lucide icon markup for shop-specific visual marks."""
+    aria = f' aria-label="{label}"' if label else ' aria-hidden="true"'
+    return f'<span class="{class_name}"{aria}><i data-lucide="{icon_name(shop)}"></i></span>'
+
+
+def lucide_init_script(path_prefix=""):
+    """Load and initialize Lucide icons."""
+    return '''<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        });
+    </script>'''
+
+
+def lucide_fallback_css():
+    """CSS fallback so icon containers remain visible if the icon script is blocked."""
+    return '''i[data-lucide]{display:inline-block;width:1.15em;height:1.15em;position:relative;flex-shrink:0;}
+        i[data-lucide]::before,i[data-lucide]::after{content:"";position:absolute;inset:18%;border:2px solid currentColor;border-radius:42% 58% 55% 45%;}
+        i[data-lucide]::after{inset:42% 16% auto 16%;height:2px;border:0;background:currentColor;border-radius:99px;transform:rotate(-25deg);}
+        svg.lucide{display:block;}'''
+
 
 def related_links_html(shop):
     """Generate HTML for related solutions cross-links."""
@@ -852,8 +924,8 @@ def related_links_html(shop):
     cards = ""
     for r in related:
         cards += f'''
-            <a href="{r["slug"]}.html" class="related-card" style="border-left:3px solid {r["colors"]["accent"]}; padding:12px 16px; text-decoration:none; color:inherit; border-radius:8px; background:#f9f9f9;">
-                <span style="font-size:1.3rem;">{r["emoji"]}</span>
+            <a href="{r["slug"]}.html" class="related-card" style="border-left:3px solid {r["colors"]["accent"]}; padding:12px 16px; text-decoration:none; color:inherit; border-radius:8px; background:#f9f9f9; display:flex; align-items:center; gap:10px;">
+                {icon_markup(r, "related-icon")}
                 <span style="font-weight:600; color:{r["colors"]["accent"]};">{r["name"]}</span>
             </a>'''
     return f'''
@@ -904,11 +976,18 @@ def brochure_template(shop):
         body {{ font-family: 'Inter', -apple-system, sans-serif; color: var(--text); background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }}
         a {{ color: inherit; text-decoration: none; }}
         .container {{ max-width: 1100px; margin: 0 auto; padding: 0 24px; }}
+        {lucide_fallback_css()}
 
         /* Nav */
         .b-nav {{ position: sticky; top:0; z-index:100; background: rgba(255,255,255,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid #f0f0f0; padding: 14px 0; }}
         .b-nav .container {{ display: flex; align-items: center; justify-content: space-between; }}
         .b-nav .logo {{ font-size: 20px; font-weight: 800; letter-spacing: -0.02em; display: flex; align-items: center; gap: 8px; }}
+        .sa-icon, .brand-icon, .related-icon {{ display:inline-flex; align-items:center; justify-content:center; color:var(--accent); flex-shrink:0; }}
+        .sa-icon svg {{ width:22px; height:22px; stroke-width:2.4; }}
+        .brand-icon {{ width:64px; height:64px; border-radius:20px; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.22); backdrop-filter:blur(10px); margin-bottom:16px; }}
+        .brand-icon svg {{ width:34px; height:34px; stroke-width:1.8; }}
+        .related-icon {{ width:32px; height:32px; border-radius:10px; background:rgba(1,69,242,0.08); }}
+        .related-icon svg {{ width:18px; height:18px; }}
         .b-nav .back {{ font-size: 14px; font-weight: 500; color: var(--accent); display: flex; align-items: center; gap: 4px; }}
         .b-nav .back:hover {{ text-decoration: underline; }}
 
@@ -917,7 +996,6 @@ def brochure_template(shop):
         .b-hero img {{ position: absolute; inset:0; width:100%; height:100%; object-fit:cover; }}
         .b-hero-overlay {{ position: absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%, transparent 100%); }}
         .b-hero-content {{ position:relative; z-index:1; padding: 48px 0; color: #fff; }}
-        .b-hero-content .emoji {{ font-size: 48px; margin-bottom: 12px; display: block; }}
         .b-hero-content h1 {{ font-size: clamp(32px, 5vw, 48px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 8px; }}
         .b-hero-content p {{ font-size: 18px; opacity: 0.85; max-width: 500px; }}
 
@@ -942,7 +1020,7 @@ def brochure_template(shop):
         .tier-desc {{ font-size: 14px; color: #64748b; margin-bottom: 16px; }}
         .tier-features {{ list-style: none; margin-bottom: 20px; }}
         .tier-features li {{ display: flex; align-items: center; gap: 8px; font-size: 13px; padding: 6px 0; border-bottom: 1px solid #f5f5f5; }}
-        .tier-features li::before {{ content: "✓"; color: var(--accent); font-weight: 700; font-size: 14px; }}
+        .tier-features li::before {{ content: ""; width:7px; height:7px; border-radius:50%; background: var(--accent); flex-shrink:0; }}
         .tier-btn {{ display: block; text-align: center; padding: 14px; background: var(--accent); color: #fff; border-radius: 12px; font-size: 15px; font-weight: 600; transition: all 0.2s; }}
         .tier-btn:hover {{ filter: brightness(0.9); transform: translateY(-1px); }}
         .tier-btn.outline {{ background: transparent; color: var(--accent); border: 2px solid var(--accent); }}
@@ -984,7 +1062,7 @@ def brochure_template(shop):
 <body>
     <nav class="b-nav">
         <div class="container">
-            <a href="../index.html" class="logo">⚡ SA-Flow</a>
+            <a href="../index.html" class="logo"><span class="sa-icon" aria-hidden="true"><i data-lucide="zap"></i></span> SA-Flow</a>
             <a href="../index.html#solutions" class="back">← All Solutions</a>
         </div>
     </nav>
@@ -993,7 +1071,7 @@ def brochure_template(shop):
         <img src="{shop["hero_img"]}" alt="{shop["name"]}" loading="eager">
         <div class="b-hero-overlay"></div>
         <div class="container b-hero-content">
-            <span class="emoji">{shop["emoji"]}</span>
+            {icon_markup(shop, "brand-icon", shop["name"])}
             <h1>{shop["name"]} Website</h1>
             <p>{shop["tagline"]}</p>
         </div>
@@ -1028,7 +1106,7 @@ def brochure_template(shop):
                 <div class="tier-card featured">
                     <div class="tier-preview">
                         <img src="{shop["gallery"][1]}" alt="Medium Preview" loading="lazy">
-                        <span class="tier-badge">★ Popular</span>
+                        <span class="tier-badge">Popular</span>
                     </div>
                     <div class="tier-body">
                         <div class="tier-name">Medium</div>
@@ -1106,9 +1184,10 @@ def brochure_template(shop):
 
     <footer class="b-footer">
         <div class="container">
-            <p>&copy; 2026 SA-Flow. All rights reserved. | saflowtech@gmail.com | <a href="https://saflow.app" style="color:rgba(255,255,255,0.5)">saflow.app</a></p>
+            <p>&copy; 2026 SA-Flow. All rights reserved. | support@saflow.app | info@saflow.app | <a href="https://saflow.app" style="color:rgba(255,255,255,0.5)">saflow.app</a></p>
         </div>
     </footer>
+    {lucide_init_script("../")}
 </body>
 </html>'''
 
@@ -1148,10 +1227,18 @@ def basic_template(shop):
         body{{ font-family:'Inter',-apple-system,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased; }}
         a{{ color:inherit;text-decoration:none; }}
         .container{{ max-width:1000px;margin:0 auto;padding:0 20px; }}
+        {lucide_fallback_css()}
 
         /* Demo Banner */
         .demo-banner{{ background:var(--accent);color:#fff;text-align:center;padding:8px;font-size:12px;font-weight:600; }}
         .demo-banner a{{ color:#fff;text-decoration:underline; }}
+        .inline-icon,.shop-icon,.contact-icon{{ display:inline-flex;align-items:center;justify-content:center;flex-shrink:0; }}
+        .inline-icon{{ width:16px;height:16px;margin-right:6px;vertical-align:-3px; }}
+        .inline-icon svg{{ width:16px;height:16px; }}
+        .shop-icon{{ width:34px;height:34px;border-radius:10px;background:var(--accent-light);color:var(--accent); }}
+        .shop-icon svg{{ width:19px;height:19px;stroke-width:2; }}
+        .contact-icon{{ width:18px;height:18px;margin-right:6px;vertical-align:-4px; }}
+        .contact-icon svg{{ width:18px;height:18px; }}
 
         /* Nav */
         nav{{ background:#fff;padding:16px 0;border-bottom:1px solid rgba(0,0,0,0.06);position:sticky;top:0;z-index:50; }}
@@ -1195,12 +1282,12 @@ def basic_template(shop):
 </head>
 <body>
     <div class="demo-banner">
-        {shop["emoji"]} This is a BASIC tier demo — <a href="../../../brochures/{shop["slug"]}.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
+        {icon_markup(shop, "inline-icon")} This is a BASIC tier demo — <a href="../../../brochures/{shop["slug"]}.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
     </div>
     <nav>
         <div class="container">
-            <div class="shop-name">{shop["emoji"]} {shop["name"]}</div>
-            <div class="nav-email">📧 info@example.com</div>
+            <div class="shop-name">{icon_markup(shop, "shop-icon")} {shop["name"]}</div>
+            <div class="nav-email"><span class="contact-icon" aria-hidden="true"><i data-lucide="mail"></i></span> info@example.com</div>
         </div>
     </nav>
     <section class="hero">
@@ -1231,6 +1318,7 @@ def basic_template(shop):
         <p>Main Road, Ranchi, Jharkhand — Email: info@example.com</p>
     </section>
     <footer><p>&copy; 2026 {shop["name"]}. Website by SA-Flow.</p></footer>
+    {lucide_init_script("../../../")}
 </body>
 </html>'''
 
@@ -1270,6 +1358,7 @@ def medium_template(shop):
         body{{ font-family:'Inter',-apple-system,sans-serif;color:var(--text);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased; }}
         a{{ color:inherit;text-decoration:none; }}
         .container{{ max-width:1100px;margin:0 auto;padding:0 24px; }}
+        {lucide_fallback_css()}
 
         /* Demo Banner */
         .demo-banner{{ background:var(--accent);color:#fff;text-align:center;padding:8px;font-size:12px;font-weight:600; }}
@@ -1321,7 +1410,8 @@ def medium_template(shop):
         .m-reviews{{ display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }}
         .m-review{{ background:#fff;border:1px solid #eee;border-radius:16px;padding:24px;transition:all 0.3s; }}
         .m-review:hover{{ box-shadow:0 8px 20px rgba(0,0,0,0.06); }}
-        .m-review .stars{{ color:#f59e0b;font-size:16px;margin-bottom:10px; }}
+        .m-review .stars{{ display:flex;gap:2px;color:#f59e0b;margin-bottom:10px; }}
+        .m-review .stars i{{ width:16px;height:16px;fill:currentColor; }}
         .m-review p{{ font-size:14px;color:#475569;margin-bottom:12px;line-height:1.6; }}
         .m-review .author{{ font-size:13px;font-weight:600; }}
 
@@ -1363,12 +1453,12 @@ def medium_template(shop):
 </head>
 <body>
     <div class="demo-banner">
-        {shop["emoji"]} This is a MEDIUM tier demo — <a href="../../../brochures/{shop["slug"]}.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
+        {icon_markup(shop, "inline-icon")} This is a MEDIUM tier demo — <a href="../../../brochures/{shop["slug"]}.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
     </div>
 
     <nav class="m-nav">
         <div class="container">
-            <div class="m-logo">{shop["emoji"]} {shop["name"]}</div>
+            <div class="m-logo">{icon_markup(shop, "shop-icon")} {shop["name"]}</div>
             <div class="m-links">
                 <a href="#products">Products</a>
                 <a href="#gallery">Gallery</a>
@@ -1444,17 +1534,17 @@ def medium_template(shop):
             </div>
             <div class="m-reviews">
                 <div class="m-review">
-                    <div class="stars">★★★★★</div>
+                    <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
                     <p>"Excellent quality and great service! Have been a regular customer for over 2 years now. Highly recommended!"</p>
                     <div class="author">— Rahul S.</div>
                 </div>
                 <div class="m-review">
-                    <div class="stars">★★★★★</div>
+                    <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
                     <p>"Best {shop["name"].lower()} in Ranchi! The staff is friendly and prices are very reasonable. Will definitely come back."</p>
                     <div class="author">— Priya M.</div>
                 </div>
                 <div class="m-review">
-                    <div class="stars">★★★★☆</div>
+                    <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star-half"></i></div>
                     <p>"Great variety and quality products. The store is well-organized and clean. Very satisfied with my experience."</p>
                     <div class="author">— Amit K.</div>
                 </div>
@@ -1472,9 +1562,9 @@ def medium_template(shop):
                 <div class="m-contact-info">
                     <h3>{shop["name"]}</h3>
                     <p>Visit us at our store or reach out through any of the channels below.</p>
-                    <div class="m-contact-detail">📍 Main Road, Ranchi, Jharkhand - 834001</div>
-                    <div class="m-contact-detail"> info@example.com</div>
-                    <div class="m-contact-detail">🕐 Mon–Sat: 9:00 AM – 9:00 PM</div>
+                    <div class="m-contact-detail"><span class="contact-icon" aria-hidden="true"><i data-lucide="map-pin"></i></span> Main Road, Ranchi, Jharkhand - 834001</div>
+                    <div class="m-contact-detail"><span class="contact-icon" aria-hidden="true"><i data-lucide="mail"></i></span> info@example.com</div>
+                    <div class="m-contact-detail"><span class="contact-icon" aria-hidden="true"><i data-lucide="clock"></i></span> Mon-Sat: 9:00 AM - 9:00 PM</div>
                     <iframe class="m-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117235.18759521538!2d85.2493468!3d23.3440997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e104aa5db7dd%3A0xdc09d49d6fee60df!2sRanchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="m-form">
@@ -1491,13 +1581,14 @@ def medium_template(shop):
     <footer class="m-footer">
         <div class="container">
             <div class="social">
-                <a href="#">📘</a>
-                <a href="#">📸</a>
-                <a href="#">🐦</a>
+                <a href="#" aria-label="Social feed"><span class="social-icon"><i data-lucide="share-2"></i></span></a>
+                <a href="#" aria-label="Photo gallery"><span class="social-icon"><i data-lucide="camera"></i></span></a>
+                <a href="#" aria-label="Messages"><span class="social-icon"><i data-lucide="message-circle"></i></span></a>
             </div>
             <p>&copy; 2026 {shop["name"]}. Website designed by <a href="../../../index.html" style="color:rgba(255,255,255,0.5)">SA-Flow</a> | <a href="https://saflow.app" style="color:rgba(255,255,255,0.4)">saflow.app</a></p>
         </div>
     </footer>
+    {lucide_init_script("../../../")}
 </body>
 </html>'''
 
@@ -1537,10 +1628,18 @@ def advanced_template(shop):
         body{{ font-family:'Inter',-apple-system,sans-serif;color:var(--text);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased; }}
         a{{ color:inherit;text-decoration:none; }}
         .container{{ max-width:1200px;margin:0 auto;padding:0 24px; }}
+        {lucide_fallback_css()}
 
         /* Demo Banner */
         .demo-banner{{ background:var(--accent);color:#fff;text-align:center;padding:10px;font-size:12px;font-weight:600; }}
         .demo-banner a{{ color:#fff;text-decoration:underline; }}
+        .inline-icon,.shop-icon,.feature-icon,.info-lucide{{ display:inline-flex;align-items:center;justify-content:center;flex-shrink:0; }}
+        .inline-icon{{ width:16px;height:16px;margin-right:6px;vertical-align:-3px; }}
+        .inline-icon svg{{ width:16px;height:16px; }}
+        .shop-icon{{ width:34px;height:34px;border-radius:10px;background:var(--accent-light);color:var(--accent); }}
+        .shop-icon svg{{ width:19px;height:19px;stroke-width:2; }}
+        .feature-icon svg{{ width:24px;height:24px;stroke-width:1.9; }}
+        .info-lucide svg{{ width:20px;height:20px;stroke-width:2; }}
 
         /* Nav */
         .a-nav{{ background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.04);position:sticky;top:0;z-index:100; }}
@@ -1581,7 +1680,7 @@ def advanced_template(shop):
         .a-features{{ display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }}
         .a-feature{{ background:#fff;border:1px solid #f0f0f0;border-radius:20px;padding:32px;transition:all 0.3s; }}
         .a-feature:hover{{ transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.06);border-color:#ddd; }}
-        .a-feature .icon{{ width:48px;height:48px;border-radius:14px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px; }}
+        .a-feature .icon{{ width:48px;height:48px;border-radius:14px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--accent); }}
         .a-feature h3{{ font-size:18px;font-weight:700;margin-bottom:6px; }}
         .a-feature p{{ font-size:14px;color:#64748b;line-height:1.6; }}
 
@@ -1599,7 +1698,8 @@ def advanced_template(shop):
         .a-testimonials{{ display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }}
         .a-testi{{ background:#fff;border:1px solid #eee;border-radius:20px;padding:32px;position:relative; }}
         .a-testi .quote{{ font-size:48px;color:var(--accent);opacity:0.15;line-height:1;position:absolute;top:16px;right:24px; }}
-        .a-testi .stars{{ color:#f59e0b;font-size:14px;margin-bottom:12px; }}
+        .a-testi .stars{{ display:flex;gap:2px;color:#f59e0b;margin-bottom:12px; }}
+        .a-testi .stars i{{ width:15px;height:15px;fill:currentColor; }}
         .a-testi p{{ font-size:15px;color:#475569;line-height:1.7;margin-bottom:16px; }}
         .a-testi .author{{ display:flex;align-items:center;gap:10px; }}
         .a-testi .avatar{{ width:38px;height:38px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--accent); }}
@@ -1646,7 +1746,7 @@ def advanced_template(shop):
         .a-contact-info h3{{ font-size:24px;font-weight:800;margin-bottom:16px; }}
         .a-contact-info > p{{ color:#475569;font-size:15px;margin-bottom:24px;line-height:1.7; }}
         .a-info-item{{ display:flex;align-items:center;gap:12px;padding:10px 0;font-size:15px; }}
-        .a-info-icon{{ width:40px;height:40px;border-radius:12px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0; }}
+        .a-info-icon{{ width:40px;height:40px;border-radius:12px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0; }}
         .a-map{{ width:100%;height:240px;border:0;border-radius:16px;margin-top:24px; }}
 
         /* Newsletter */
@@ -1683,12 +1783,12 @@ def advanced_template(shop):
 </head>
 <body>
     <div class="demo-banner">
-        {shop["emoji"]} This is an ADVANCED tier demo — <a href="../../../brochures/{shop["slug"]}.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
+        {icon_markup(shop, "inline-icon")} This is an ADVANCED tier demo — <a href="../../../brochures/{shop["slug"]}.html">View all plans</a> | Designed by <a href="../../../index.html">SA-Flow</a>
     </div>
 
     <nav class="a-nav">
         <div class="container">
-            <div class="a-logo">{shop["emoji"]} {shop["name"]}</div>
+            <div class="a-logo">{icon_markup(shop, "shop-icon")} {shop["name"]}</div>
             <div class="a-links">
                 <a href="#features">Features</a>
                 <a href="#products">Products</a>
@@ -1727,32 +1827,32 @@ def advanced_template(shop):
             </div>
             <div class="a-features">
                 <div class="a-feature">
-                    <div class="icon">⭐</div>
+                    <div class="icon"><span class="feature-icon"><i data-lucide="badge-check"></i></span></div>
                     <h3>Premium Quality</h3>
                     <p>We source only the finest products to ensure you get the best quality every single time.</p>
                 </div>
                 <div class="a-feature">
-                    <div class="icon">🚀</div>
+                    <div class="icon"><span class="feature-icon"><i data-lucide="rocket"></i></span></div>
                     <h3>Fast Service</h3>
                     <p>Quick and efficient — we value your time and ensure a smooth, speedy experience.</p>
                 </div>
                 <div class="a-feature">
-                    <div class="icon">💰</div>
+                    <div class="icon"><span class="feature-icon"><i data-lucide="badge-indian-rupee"></i></span></div>
                     <h3>Best Prices</h3>
                     <p>Competitive pricing without compromising quality. Get the best value for your money.</p>
                 </div>
                 <div class="a-feature">
-                    <div class="icon">🤝</div>
+                    <div class="icon"><span class="feature-icon"><i data-lucide="handshake"></i></span></div>
                     <h3>Expert Advice</h3>
                     <p>Our knowledgeable staff is always ready to help you make the right choice.</p>
                 </div>
                 <div class="a-feature">
-                    <div class="icon">🔒</div>
+                    <div class="icon"><span class="feature-icon"><i data-lucide="shield-check"></i></span></div>
                     <h3>Trusted &amp; Reliable</h3>
                     <p>Years of serving the community with honesty and integrity. Your trust is our foundation.</p>
                 </div>
                 <div class="a-feature">
-                    <div class="icon">📦</div>
+                    <div class="icon"><span class="feature-icon"><i data-lucide="package"></i></span></div>
                     <h3>Home Delivery</h3>
                     <p>Can't visit? No worries! We deliver right to your doorstep within Ranchi city limits.</p>
                 </div>
@@ -1789,7 +1889,7 @@ def advanced_template(shop):
             <div class="a-testimonials">
                 <div class="a-testi">
                     <div class="quote">"</div>
-                    <div class="stars">★★★★★</div>
+                    <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
                     <p>Absolutely the best {shop["name"].lower()} in Ranchi! The quality is unmatched and the staff goes above and beyond to help.</p>
                     <div class="author">
                         <div class="avatar">R</div>
@@ -1798,7 +1898,7 @@ def advanced_template(shop):
                 </div>
                 <div class="a-testi">
                     <div class="quote">"</div>
-                    <div class="stars">★★★★★</div>
+                    <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
                     <p>Been coming here for years. Consistent quality, fair prices, and excellent customer service. Highly recommended!</p>
                     <div class="author">
                         <div class="avatar">P</div>
@@ -1807,7 +1907,7 @@ def advanced_template(shop):
                 </div>
                 <div class="a-testi">
                     <div class="quote">"</div>
-                    <div class="stars">★★★★☆</div>
+                    <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star-half"></i></div>
                     <p>Great selection and the store is always well-organized. The home delivery option is a game-changer!</p>
                     <div class="author">
                         <div class="avatar">A</div>
@@ -1917,16 +2017,16 @@ def advanced_template(shop):
                     <h3>{shop["name"]}</h3>
                     <p>{shop["about"][:120]}...</p>
                     <div class="a-info-item">
-                        <div class="a-info-icon">📍</div>
+                        <div class="a-info-icon"><span class="info-lucide"><i data-lucide="map-pin"></i></span></div>
                         <div>Main Road, Ranchi<br>Jharkhand - 834001</div>
                     </div>
                     <div class="a-info-item">
-                        <div class="a-info-icon"></div>
+                        <div class="a-info-icon"><span class="info-lucide"><i data-lucide="mail"></i></span></div>
                         <div>info@example.com</div>
                     </div>
                     <div class="a-info-item">
-                        <div class="a-info-icon">🕐</div>
-                        <div>Mon – Sat: 9 AM – 9 PM</div>
+                        <div class="a-info-icon"><span class="info-lucide"><i data-lucide="clock"></i></span></div>
+                        <div>Mon - Sat: 9 AM - 9 PM</div>
                     </div>
                     <iframe class="a-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117235.18759521538!2d85.2493468!3d23.3440997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e104aa5db7dd%3A0xdc09d49d6fee60df!2sRanchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
                 </div>
@@ -1947,7 +2047,7 @@ def advanced_template(shop):
         <div class="container">
             <div class="a-footer-grid">
                 <div class="a-footer-brand">
-                    <div class="logo">{shop["emoji"]} {shop["name"]}</div>
+                    <div class="logo">{icon_markup(shop, "shop-icon")} {shop["name"]}</div>
                     <p>{shop["about"][:120]}...</p>
                 </div>
                 <div class="a-footer-col">
@@ -1972,6 +2072,7 @@ def advanced_template(shop):
             </div>
         </div>
     </footer>
+    {lucide_init_script("../../../")}
 </body>
 </html>'''
 
@@ -2013,12 +2114,12 @@ def generate_all():
             f.write(advanced_template(shop))
         total += 1
 
-        print(f"  ✓ {shop['name']} — brochure + 3 tiers")
+        print(f"  Generated {shop['name']} - brochure + 3 tiers")
 
     print(f"\n{'='*50}")
-    print(f"  ✅ Generated {total} files for {len(SHOPS)} shop types!")
-    print(f"  📁 Brochures: {len(SHOPS)} files")
-    print(f"  🌐 Examples: {len(SHOPS) * 3} files")
+    print(f"  Generated {total} files for {len(SHOPS)} shop types!")
+    print(f"  Brochures: {len(SHOPS)} files")
+    print(f"  Examples: {len(SHOPS) * 3} files")
     print(f"{'='*50}")
 
 

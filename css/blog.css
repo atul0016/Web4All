@@ -45,7 +45,6 @@
 }
 
 .blog-card-icon {
-    font-size: 40px;
     flex-shrink: 0;
     width: 64px;
     height: 64px;
@@ -54,6 +53,13 @@
     justify-content: center;
     background: var(--bg);
     border-radius: var(--radius);
+    color: var(--accent);
+}
+
+.blog-card-icon svg {
+    width: 34px;
+    height: 34px;
+    stroke-width: 1.8;
 }
 
 .blog-card-content {
@@ -230,6 +236,26 @@
 
 .article-table tr:last-child td {
     border-bottom: none;
+}
+
+.inline-status {
+    width: 17px;
+    height: 17px;
+    margin-right: 6px;
+    vertical-align: -3px;
+    stroke-width: 2.2;
+}
+
+.inline-status.ok {
+    color: #16a34a;
+}
+
+.inline-status.no {
+    color: #dc2626;
+}
+
+.inline-status.warn {
+    color: #f59e0b;
 }
 
 /* --- Article CTA --- */
