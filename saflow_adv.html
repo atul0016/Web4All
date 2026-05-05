@@ -41,7 +41,7 @@ a{color:inherit}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(7,19,18,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:var(--font-head);font-size:1.45rem;font-weight:800;letter-spacing:-.02em;color:var(--txt);text-decoration:none;white-space:nowrap}
+.nav-logo{font-family:var(--font-head);font-size:1.45rem;font-weight:800;letter-spacing:0;color:var(--txt);text-decoration:none;white-space:nowrap}
 .nav-logo span{color:var(--accent2)}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
 .nav-links a{color:var(--txt2);font-size:.875rem;text-decoration:none;font-weight:500;letter-spacing:.02em;text-transform:uppercase;transition:color .2s}
@@ -53,12 +53,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;al
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:80px 80px;mask-image:linear-gradient(to bottom,transparent 0%,black 30%,black 70%,transparent 100%)}
 .hero-glow{position:absolute;top:10%;right:6%;width:600px;height:600px;background:radial-gradient(circle,rgba(15,118,110,.25),transparent 70%);pointer-events:none}
 .hero-glow2{position:absolute;bottom:7%;left:5%;width:430px;height:430px;background:radial-gradient(circle,rgba(244,185,66,.12),transparent 70%);pointer-events:none}
-.hero-inner{position:relative;z-index:1;width:100%;display:grid;grid-template-columns:minmax(0,.88fr) minmax(360px,1fr);gap:clamp(2rem,5vw,5rem);align-items:center}
-.hero-copy{max-width:660px}
+.hero-inner{position:relative;z-index:1;width:100%;max-width:1680px;margin:0 auto;display:grid;grid-template-columns:minmax(420px,.78fr) minmax(520px,1fr);gap:clamp(2.5rem,5vw,6rem);align-items:center}
+.hero-copy{max-width:620px}
 .hero-badge{position:relative;display:inline-flex;align-items:center;gap:.5rem;background:rgba(15,118,110,.14);border:1px solid rgba(15,118,110,.38);color:var(--accent2);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.42rem 1rem;border-radius:999px;margin-bottom:1.35rem;animation:fadeUp .8s ease both;width:max-content}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent2);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(1.4)}}
-.hero-headline{position:relative;font-family:var(--font-head);font-size:clamp(2.8rem,5.4vw,5.9rem);font-weight:800;line-height:.95;letter-spacing:-.035em;color:var(--txt);animation:fadeUp .9s ease .1s both;max-width:760px}
+.hero-headline{position:relative;font-family:var(--font-head);font-size:clamp(2.8rem,4.35vw,5rem);font-weight:800;line-height:1;letter-spacing:0;color:var(--txt);animation:fadeUp .9s ease .1s both;max-width:620px}
 .hero-headline .line-orange{color:var(--accent2)}
 .hero-headline .line-outline{-webkit-text-stroke:1px rgba(247,241,230,.9);color:transparent}
 .hero-sub-row{position:relative;display:flex;flex-direction:column;align-items:flex-start;margin-top:1.6rem;gap:1.6rem;animation:fadeUp 1s ease .3s both}
@@ -71,7 +71,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;al
 .btn-ghost:hover{color:var(--txt)}
 .hero-scroll{position:relative;display:flex;align-items:center;gap:.75rem;color:var(--txt2);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;margin-top:3.25rem}
 .hero-scroll-line{width:40px;height:1px;background:var(--txt2)}
-.hero-visual{position:relative;min-height:530px;animation:fadeUp 1s ease .2s both}
+.hero-visual{position:relative;min-height:560px;width:100%;max-width:860px;justify-self:center;animation:fadeUp 1s ease .2s both}
 .ad-orbit{position:absolute;inset:0;border:1px solid rgba(244,185,66,.14);border-radius:42px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(15,118,110,.08));box-shadow:0 36px 90px rgba(0,0,0,.28);overflow:hidden}
 .ad-orbit::before{content:"";position:absolute;inset:-1px;background:linear-gradient(90deg,transparent,rgba(244,185,66,.28),transparent);height:1px}
 .ad-gridlines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:38px 38px;mask-image:radial-gradient(circle at 50% 46%,black 0 52%,transparent 78%)}
