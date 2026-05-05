@@ -1,548 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advertising & Digital Marketing Services | SA-Flow</title>
-    <meta name="description" content="SA-Flow advertising services for local businesses: Google Ads, Meta Ads, creatives, landing pages, lead generation, retargeting, and monthly growth reporting.">
-    <meta name="keywords" content="advertising services ranchi, digital marketing ranchi, Google Ads agency, Meta Ads India, lead generation, SA-Flow advertising">
-    <meta property="og:title" content="SA-Flow Advertising & Digital Marketing Services">
-    <meta property="og:description" content="Launch campaigns that bring calls, WhatsApp leads, bookings, and sales for your business.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://saflow.app/saflow_adv.html">
-    <meta property="og:image" content="https://saflow.app/og-image.png">
-    <meta name="theme-color" content="#0F766E">
-    <link rel="canonical" href="https://saflow.app/saflow_adv.html">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        .adv-hero {
-            min-height: 92vh;
-            padding: 130px 0 72px;
-            background:
-                radial-gradient(circle at 82% 18%, rgba(244,185,66,0.28), transparent 34%),
-                radial-gradient(circle at 12% 78%, rgba(15,118,110,0.18), transparent 30%),
-                linear-gradient(135deg, #F7F1E6 0%, #FFFFFF 48%, #E3F7F2 100%);
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-        .adv-hero-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-            gap: 56px;
-            align-items: center;
-        }
-        .adv-kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 7px 14px;
-            border-radius: var(--radius-full);
-            background: var(--bg-white);
-            border: 1px solid var(--border);
-            color: var(--accent);
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
-        }
-        .adv-title {
-            font-size: clamp(42px, 7vw, 78px);
-            line-height: 1;
-            letter-spacing: -0.055em;
-            font-weight: 900;
-            margin-bottom: 24px;
-            color: var(--ink);
-        }
-        .adv-title span {
-            background: linear-gradient(135deg, var(--accent), var(--accent-warm), var(--accent-coral));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .adv-lede {
-            font-size: clamp(17px, 2vw, 20px);
-            color: var(--text-secondary);
-            line-height: 1.75;
-            max-width: 650px;
-            margin-bottom: 34px;
-        }
-        .adv-actions {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-bottom: 42px;
-        }
-        .adv-proof {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-        .adv-proof-card,
-        .adv-panel,
-        .adv-card,
-        .adv-package,
-        .adv-step {
-            background: rgba(255,255,255,0.82);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-        }
-        .adv-proof-card {
-            padding: 18px;
-        }
-        .adv-proof-card strong {
-            display: block;
-            font-size: 26px;
-            line-height: 1;
-            color: var(--accent);
-            margin-bottom: 6px;
-        }
-        .adv-proof-card span {
-            color: var(--text-secondary);
-            font-size: 13px;
-            font-weight: 600;
-        }
-        .adv-panel {
-            position: relative;
-            padding: 28px;
-            overflow: hidden;
-        }
-        .adv-panel::before {
-            content: "";
-            position: absolute;
-            inset: 0 0 auto;
-            height: 5px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-warm), var(--accent-coral));
-        }
-        .adv-panel-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 22px;
-        }
-        .adv-panel-title {
-            font-weight: 800;
-            font-size: 18px;
-        }
-        .adv-status {
-            color: #22c55e;
-            font-size: 13px;
-            font-weight: 800;
-        }
-        .adv-metric {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 14px;
-            align-items: center;
-            padding: 16px 0;
-            border-top: 1px solid var(--border-light);
-        }
-        .adv-metric:first-of-type {
-            border-top: 0;
-        }
-        .adv-metric span {
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 600;
-        }
-        .adv-metric strong {
-            color: var(--ink);
-            font-size: 22px;
-        }
-        .adv-bar {
-            grid-column: 1 / -1;
-            height: 9px;
-            border-radius: var(--radius-full);
-            background: var(--accent-light);
-            overflow: hidden;
-        }
-        .adv-bar i {
-            display: block;
-            height: 100%;
-            border-radius: inherit;
-            background: linear-gradient(90deg, var(--accent), var(--accent-warm));
-        }
-        .adv-section {
-            padding: 110px 0;
-        }
-        .adv-section.alt {
-            background: var(--bg-white);
-        }
-        .adv-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .adv-card,
-        .adv-package,
-        .adv-step {
-            padding: 28px;
-        }
-        .adv-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 18px;
-            color: var(--accent);
-            background: linear-gradient(135deg, var(--accent-light), rgba(244,185,66,0.22));
-            border: 1px solid rgba(15,118,110,0.14);
-        }
-        .adv-card h3,
-        .adv-package h3,
-        .adv-step h3 {
-            font-size: 20px;
-            line-height: 1.25;
-            margin-bottom: 10px;
-        }
-        .adv-card p,
-        .adv-step p {
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-        .adv-package {
-            display: flex;
-            flex-direction: column;
-        }
-        .adv-package.featured {
-            background: linear-gradient(160deg, var(--accent), #1F3D36);
-            color: #fff;
-            transform: translateY(-10px);
-            box-shadow: 0 22px 46px rgba(15,118,110,0.26);
-        }
-        .adv-price {
-            font-size: 34px;
-            font-weight: 900;
-            letter-spacing: -0.04em;
-            margin: 10px 0 18px;
-        }
-        .adv-package p,
-        .adv-package li {
-            color: var(--text-secondary);
-            font-size: 15px;
-        }
-        .adv-package.featured p,
-        .adv-package.featured li {
-            color: rgba(255,255,255,0.78);
-        }
-        .adv-package ul {
-            list-style: none;
-            display: grid;
-            gap: 10px;
-            margin: 8px 0 26px;
-        }
-        .adv-package li::before {
-            content: "✓";
-            color: var(--accent);
-            font-weight: 900;
-            margin-right: 10px;
-        }
-        .adv-package.featured li::before {
-            color: var(--accent-warm);
-        }
-        .adv-package .btn {
-            margin-top: auto;
-        }
-        .adv-cta {
-            padding: 105px 0;
-            background:
-                radial-gradient(circle at 16% 20%, rgba(244,185,66,0.18), transparent 28%),
-                linear-gradient(135deg, #17211F 0%, #1F3D36 100%);
-            color: #fff;
-            text-align: center;
-        }
-        .adv-cta .section-title,
-        .adv-cta .section-desc {
-            color: #fff;
-        }
-        .adv-cta .section-desc {
-            margin: 0 auto 30px;
-            color: rgba(255,255,255,0.72);
-        }
-        @media (max-width: 1024px) {
-            .adv-hero-grid,
-            .adv-grid {
-                grid-template-columns: 1fr;
-            }
-            .adv-panel {
-                max-width: 560px;
-            }
-            .adv-package.featured {
-                transform: none;
-            }
-        }
-        @media (max-width: 720px) {
-            .adv-hero {
-                min-height: auto;
-                padding: 110px 0 62px;
-            }
-            .adv-proof {
-                grid-template-columns: 1fr;
-            }
-            .adv-actions {
-                flex-direction: column;
-            }
-            .adv-actions .btn {
-                width: 100%;
-            }
-            .adv-section,
-            .adv-cta {
-                padding: 78px 0;
-            }
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Saflow — Global Performance Marketing Agency</title>
+<meta name="description" content="Saflow is India's global performance marketing agency, helping brands grow with performance marketing, SEO, creative production, analytics, brand strategy, and India market entry support."/>
+<meta property="og:title" content="Saflow — Global Performance Marketing Agency"/>
+<meta property="og:description" content="We build campaigns that convert for brands across the USA, UK, Germany, UAE, Australia, and India."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://saflow.app/saflow_adv.html"/>
+<meta property="og:image" content="https://saflow.app/og-image.png"/>
+<meta name="theme-color" content="#0F766E"/>
+<link rel="canonical" href="https://saflow.app/saflow_adv.html"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#071312;
+  --bg2:#0D1B19;
+  --bg3:#142421;
+  --txt:#F7F1E6;
+  --txt2:#B8C3BD;
+  --accent:#0F766E;
+  --accent-hover:#0B5E58;
+  --accent2:#F4B942;
+  --accent3:#E76F51;
+  --border:rgba(247,241,230,0.10);
+  --font-head:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--txt);font-family:var(--font-body);overflow-x:hidden;line-height:1.6;cursor:none}
+a{color:inherit}
+.cursor{position:fixed;width:8px;height:8px;background:var(--accent2);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(244,185,66,0.55);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(7,19,18,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--font-head);font-size:1.6rem;font-weight:800;letter-spacing:-.02em;color:var(--txt);text-decoration:none}
+.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--txt2);font-size:.875rem;text-decoration:none;font-weight:500;letter-spacing:.02em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--txt)}
+.nav-cta{background:linear-gradient(135deg,var(--accent),#159A8E);color:#fff;border:none;padding:.65rem 1.35rem;font-size:.875rem;font-weight:700;cursor:none;border-radius:999px;text-decoration:none;transition:all .2s;letter-spacing:.02em;box-shadow:0 14px 30px rgba(15,118,110,.28)}
+.nav-cta:hover{background:linear-gradient(135deg,var(--accent-hover),var(--accent));transform:translateY(-1px)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 5% 6rem;position:relative;overflow:hidden}
+.hero-noise{position:absolute;inset:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:80px 80px;mask-image:linear-gradient(to bottom,transparent 0%,black 30%,black 70%,transparent 100%)}
+.hero-glow{position:absolute;top:10%;right:6%;width:600px;height:600px;background:radial-gradient(circle,rgba(15,118,110,.25),transparent 70%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:7%;left:5%;width:430px;height:430px;background:radial-gradient(circle,rgba(244,185,66,.12),transparent 70%);pointer-events:none}
+.hero-badge{position:relative;display:inline-flex;align-items:center;gap:.5rem;background:rgba(15,118,110,.14);border:1px solid rgba(15,118,110,.38);color:var(--accent2);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.42rem 1rem;border-radius:999px;margin-bottom:2rem;animation:fadeUp .8s ease both;width:max-content}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--accent2);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(1.4)}}
+.hero-headline{position:relative;font-family:var(--font-head);font-size:clamp(3.4rem,8vw,8rem);font-weight:800;line-height:.92;letter-spacing:-.03em;color:var(--txt);animation:fadeUp .9s ease .1s both}
+.hero-headline .line-orange{color:var(--accent2)}
+.hero-headline .line-outline{-webkit-text-stroke:1px rgba(247,241,230,.9);color:transparent}
+.hero-sub-row{position:relative;display:flex;align-items:flex-end;justify-content:space-between;margin-top:3rem;gap:2rem;animation:fadeUp 1s ease .3s both}
+.hero-desc{max-width:540px;color:var(--txt2);font-size:1rem;line-height:1.75;font-weight:300}
+.hero-desc strong{color:var(--txt);font-weight:600}
+.hero-actions{display:flex;flex-direction:column;align-items:flex-end;gap:1rem}
+.btn-primary{display:inline-flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,var(--accent),#159A8E);color:#fff;padding:1rem 2rem;font-size:1rem;font-weight:700;text-decoration:none;border-radius:999px;transition:all .25s;white-space:nowrap;cursor:none;box-shadow:0 16px 34px rgba(15,118,110,.28)}
+.btn-primary:hover{background:linear-gradient(135deg,var(--accent-hover),var(--accent));transform:translateY(-2px);gap:1.25rem}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;color:var(--txt2);font-size:.875rem;text-decoration:none;transition:color .2s;cursor:none}
+.btn-ghost:hover{color:var(--txt)}
+.hero-scroll{position:relative;display:flex;align-items:center;gap:.75rem;color:var(--txt2);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;margin-top:5rem}
+.hero-scroll-line{width:40px;height:1px;background:var(--txt2)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.marquee-section{padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--bg2)}
+.marquee-track{display:flex;gap:0;white-space:nowrap;animation:marquee 30s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{display:inline-flex;align-items:center;gap:1rem;padding:0 2.5rem;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--txt2)}
+.marquee-dot{width:5px;height:5px;background:var(--accent2);border-radius:50%;flex-shrink:0}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.stats-section{padding:6rem 5%;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stat-box{background:var(--bg);padding:3rem 2.5rem;display:flex;flex-direction:column;gap:.75rem;transition:background .3s}
+.stat-box:hover{background:var(--bg3)}
+.stat-num{font-family:var(--font-head);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--txt)}
+.stat-num span{color:var(--accent2)}
+.stat-label{font-size:.875rem;color:var(--txt2);font-weight:500;letter-spacing:.03em}
+.stat-bar{width:32px;height:2px;background:var(--accent2);margin-top:.5rem}
+.section{padding:7rem 5%}
+.section-tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--accent2);margin-bottom:1.25rem}
+.section-title{font-family:var(--font-head);font-size:clamp(2rem,4vw,3.5rem);font-weight:800;line-height:1.05;letter-spacing:-.025em;color:var(--txt);margin-bottom:1.5rem}
+.section-title em{color:var(--accent2);font-style:normal}
+.section-body{color:var(--txt2);font-size:1rem;line-height:1.8;font-weight:300;max-width:560px}
+.services-section{background:var(--bg2)}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;gap:2rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.service-card{background:var(--bg2);padding:2.5rem;position:relative;overflow:hidden;transition:background .35s;cursor:none}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(244,185,66,.06),transparent 60%);opacity:0;transition:opacity .35s}
+.service-card:hover{background:var(--bg3)}
+.service-card:hover::before{opacity:1}
+.service-num{font-family:var(--font-head);font-size:.75rem;font-weight:700;color:var(--accent2);letter-spacing:.15em;margin-bottom:1.5rem}
+.service-icon{width:48px;height:48px;margin-bottom:1.5rem;position:relative;display:grid;place-items:center;color:var(--accent2);font-size:1.6rem;border:1px solid rgba(244,185,66,.28);border-radius:12px;background:rgba(244,185,66,.08)}
+.service-name{font-family:var(--font-head);font-size:1.25rem;font-weight:700;color:var(--txt);margin-bottom:.75rem;line-height:1.2}
+.service-desc{font-size:.875rem;color:var(--txt2);line-height:1.7;font-weight:300}
+.service-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.5rem}
+.tag{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .75rem;border:1px solid var(--border);color:var(--txt2);border-radius:999px;transition:all .2s}
+.service-card:hover .tag{border-color:rgba(244,185,66,.35);color:var(--txt)}
+.service-arrow{position:absolute;bottom:2rem;right:2rem;width:36px;height:36px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--txt2);font-size:.875rem;transition:all .3s}
+.service-card:hover .service-arrow{border-color:var(--accent2);background:var(--accent2);color:#071312;transform:translate(2px,-2px)}
+.why-section{background:var(--bg)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:1rem}
+.why-left{position:sticky;top:120px}
+.why-big-text{font-family:var(--font-head);font-size:clamp(3rem,6vw,5.5rem);font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--txt)}
+.why-big-text .orange{color:var(--accent2)}
+.why-big-text .outline{-webkit-text-stroke:1px rgba(255,255,255,.25);color:transparent}
+.why-list{display:flex;flex-direction:column;gap:0}
+.why-item{padding:2rem 0;border-bottom:1px solid var(--border);display:flex;gap:2rem;align-items:flex-start;transition:all .25s}
+.why-item:hover{padding-left:.5rem}
+.why-item-num{font-family:var(--font-head);font-size:.75rem;font-weight:700;color:var(--accent2);letter-spacing:.1em;min-width:28px;padding-top:.25rem}
+.why-item-title{font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:var(--txt);margin-bottom:.5rem}
+.why-item-desc{font-size:.875rem;color:var(--txt2);line-height:1.7;font-weight:300}
+.process-section{background:var(--bg3)}
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:4rem;border:1px solid var(--border);background:var(--border)}
+.process-step{background:var(--bg3);padding:2rem 1.75rem;position:relative;transition:background .3s}
+.process-step:hover{background:#1B302C}
+.process-step-num{font-family:var(--font-head);font-size:2.5rem;font-weight:800;color:rgba(255,255,255,.07);line-height:1;margin-bottom:1rem}
+.process-step-title{font-family:var(--font-head);font-size:.95rem;font-weight:700;color:var(--txt);margin-bottom:.5rem;line-height:1.3}
+.process-step-desc{font-size:.8rem;color:var(--txt2);line-height:1.6;font-weight:300}
+.process-step::after{content:'→';position:absolute;right:-.65rem;top:50%;transform:translateY(-50%);color:var(--accent2);font-size:1rem;z-index:2;background:var(--bg3);padding:.1rem}
+.process-step:last-child::after{display:none}
+.global-section{background:var(--bg2);text-align:center}
+.global-inner{max-width:900px;margin:0 auto}
+.markets-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:3rem}
+.market-chip{display:flex;align-items:center;gap:.6rem;padding:.75rem 1.5rem;border:1px solid var(--border);border-radius:999px;font-size:.875rem;color:var(--txt);font-weight:500;transition:all .25s;cursor:none}
+.market-chip:hover{border-color:var(--accent2);background:rgba(244,185,66,.07);color:var(--accent2)}
+.market-flag{font-size:1.1rem}
+.market-dot{width:5px;height:5px;background:rgba(255,255,255,.22);border-radius:50%}
+.market-chip:hover .market-dot{background:var(--accent2)}
+.topics-section{background:var(--bg)}
+.topics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:3rem}
+.topic-card{background:var(--bg3);border:1px solid var(--border);padding:2rem;border-radius:14px;display:flex;gap:1.5rem;align-items:flex-start;transition:all .25s;cursor:none}
+.topic-card:hover{border-color:rgba(244,185,66,.35);background:#1B302C;transform:translateX(4px)}
+.topic-icon-wrap{width:44px;height:44px;border-radius:12px;background:rgba(244,185,66,.10);border:1px solid rgba(244,185,66,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+.topic-title{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--txt);margin-bottom:.4rem}
+.topic-desc{font-size:.825rem;color:var(--txt2);line-height:1.6;font-weight:300}
+.cta-section{background:var(--bg2);padding:8rem 5%;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(15,118,110,.22),transparent 70%);pointer-events:none}
+.cta-headline{font-family:var(--font-head);font-size:clamp(3rem,7vw,7rem);font-weight:800;line-height:.9;letter-spacing:-.035em;color:var(--txt);margin-bottom:2rem;position:relative}
+.cta-headline .line2{color:var(--accent2)}
+.cta-sub{color:var(--txt2);font-size:1.1rem;font-weight:300;margin-bottom:3rem;position:relative}
+.cta-actions{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;position:relative}
+.btn-big{padding:1.2rem 2.5rem;font-size:1rem;font-weight:700;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:.75rem;transition:all .25s;cursor:none}
+.btn-big-primary{background:linear-gradient(135deg,var(--accent),#159A8E);color:#fff}
+.btn-big-primary:hover{background:linear-gradient(135deg,var(--accent-hover),var(--accent));transform:translateY(-3px)}
+.btn-big-ghost{background:transparent;color:var(--txt);border:1px solid var(--border)}
+.btn-big-ghost:hover{border-color:var(--txt2);background:rgba(255,255,255,.03)}
+.contact-info{display:flex;justify-content:center;gap:3rem;margin-top:4rem;flex-wrap:wrap;position:relative}
+.contact-item{display:flex;flex-direction:column;gap:.3rem;align-items:center}
+.contact-label{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--txt2);font-weight:700}
+.contact-val{font-size:1rem;color:var(--txt);font-weight:600}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 5% 2rem}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem}
+.footer-brand-name{font-family:var(--font-head);font-size:2rem;font-weight:800;color:var(--txt);margin-bottom:1rem}
+.footer-brand-name span{color:var(--accent2)}
+.footer-brand-desc{font-size:.875rem;color:var(--txt2);line-height:1.7;font-weight:300;margin-bottom:2rem}
+.footer-socials{display:flex;gap:.75rem}
+.social-btn{width:36px;height:36px;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--txt2);font-size:.8rem;text-decoration:none;transition:all .2s;cursor:none}
+.social-btn:hover{border-color:var(--accent2);color:var(--accent2)}
+.footer-col-title{font-family:var(--font-head);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--txt);margin-bottom:1.25rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.footer-links a{color:var(--txt2);text-decoration:none;font-size:.875rem;transition:color .2s;font-weight:300}
+.footer-links a:hover{color:var(--txt)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.8rem;color:var(--txt2);font-weight:300}
+.footer-badge{font-size:.75rem;color:var(--txt2);display:flex;align-items:center;gap:.4rem}
+.footer-badge span{color:var(--accent2)}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+@media(max-width:1024px){.services-grid{grid-template-columns:repeat(2,1fr)}.why-grid{grid-template-columns:1fr;gap:3rem}.why-left{position:static}.process-steps{grid-template-columns:repeat(3,1fr)}.process-step:nth-child(3)::after{display:none}.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){body{cursor:auto}.cursor,.cursor-ring{display:none}nav .nav-links{display:none}.stats-section{grid-template-columns:repeat(2,1fr)}.services-grid{grid-template-columns:1fr}.topics-grid{grid-template-columns:1fr}.process-steps{grid-template-columns:1fr}.process-step::after{display:none}.services-header{flex-direction:column;align-items:flex-start}.footer-top{grid-template-columns:1fr}.hero-sub-row{flex-direction:column;align-items:flex-start}.hero-actions{align-items:flex-start}.hero{padding-top:7rem}.footer-bottom{align-items:flex-start}}
+</style>
 </head>
 <body>
-    <nav class="nav" id="nav">
-        <div class="container nav-container">
-            <a href="/" class="logo" aria-label="SA-Flow Home">
-                <span class="logo-icon" aria-hidden="true"><i data-lucide="zap"></i></span>
-                <span class="logo-text">SA-Flow</span>
-            </a>
-            <div class="nav-links" id="navLinks">
-                <a href="/">Home</a>
-                <a href="#services">Services</a>
-                <a href="#packages">Packages</a>
-                <a href="#process">Process</a>
-                <a href="/#contact">Contact</a>
-            </div>
-            <a href="/?service=advertising#contact" class="btn btn-primary btn-sm nav-cta">Write to Us</a>
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
-
-    <main>
-        <section class="adv-hero">
-            <div class="container adv-hero-grid">
-                <div data-animate>
-                    <div class="adv-kicker"><span class="badge-dot"></span> Advertising Service</div>
-                    <h1 class="adv-title">Ads that bring <span>real enquiries.</span></h1>
-                    <p class="adv-lede">SA-Flow helps local businesses turn attention into calls, WhatsApp leads, bookings, and repeat customers through focused Google Ads, Meta Ads, landing pages, and practical monthly reporting.</p>
-                    <div class="adv-actions">
-                        <a href="/?service=advertising#contact" class="btn btn-primary btn-lg">Write to Us</a>
-                        <a href="#packages" class="btn btn-ghost btn-lg">View Packages</a>
-                    </div>
-                    <div class="adv-proof">
-                        <div class="adv-proof-card">
-                            <strong>30d</strong>
-                            <span>Launch-ready campaign cycle</span>
-                        </div>
-                        <div class="adv-proof-card">
-                            <strong>4+</strong>
-                            <span>Channels planned together</span>
-                        </div>
-                        <div class="adv-proof-card">
-                            <strong>1</strong>
-                            <span>Website, ads, and leads team</span>
-                        </div>
-                    </div>
-                </div>
-                <aside class="adv-panel" data-animate>
-                    <div class="adv-panel-header">
-                        <div>
-                            <div class="adv-panel-title">Campaign Control Room</div>
-                            <p style="color:var(--text-secondary);font-size:14px">A clear view of what is working.</p>
-                        </div>
-                        <span class="adv-status">Live</span>
-                    </div>
-                    <div class="adv-metric">
-                        <span>Lead Quality</span>
-                        <strong>86%</strong>
-                        <div class="adv-bar"><i style="width:86%"></i></div>
-                    </div>
-                    <div class="adv-metric">
-                        <span>Creative Testing</span>
-                        <strong>12</strong>
-                        <div class="adv-bar"><i style="width:72%"></i></div>
-                    </div>
-                    <div class="adv-metric">
-                        <span>Budget Efficiency</span>
-                        <strong>3.4x</strong>
-                        <div class="adv-bar"><i style="width:78%"></i></div>
-                    </div>
-                </aside>
-            </div>
-        </section>
-
-        <section class="adv-section alt" id="services">
-            <div class="container">
-                <div class="section-header" data-animate>
-                    <span class="section-tag">What We Run</span>
-                    <h2 class="section-title">Advertising support for the whole funnel.</h2>
-                    <p class="section-desc">We keep the work practical: get found, get clicked, get contacted, and know where your money went.</p>
-                </div>
-                <div class="adv-grid">
-                    <div class="adv-card" data-animate>
-                        <div class="adv-icon"><i data-lucide="search"></i></div>
-                        <h3>Google Search Ads</h3>
-                        <p>Capture high-intent buyers when they search for your service, product, brand, or location.</p>
-                    </div>
-                    <div class="adv-card" data-animate>
-                        <div class="adv-icon"><i data-lucide="megaphone"></i></div>
-                        <h3>Meta Ads</h3>
-                        <p>Run Facebook and Instagram campaigns with creatives built for calls, messages, visits, and sales.</p>
-                    </div>
-                    <div class="adv-card" data-animate>
-                        <div class="adv-icon"><i data-lucide="layout-dashboard"></i></div>
-                        <h3>Landing Pages</h3>
-                        <p>Build fast, focused pages that match the ad promise and make it easy for customers to enquire.</p>
-                    </div>
-                    <div class="adv-card" data-animate>
-                        <div class="adv-icon"><i data-lucide="pen-tool"></i></div>
-                        <h3>Creative Production</h3>
-                        <p>Static ads, short videos, offer banners, and copy angles designed around your business goals.</p>
-                    </div>
-                    <div class="adv-card" data-animate>
-                        <div class="adv-icon"><i data-lucide="repeat-2"></i></div>
-                        <h3>Retargeting</h3>
-                        <p>Bring back people who visited your website, clicked your ads, or showed interest earlier.</p>
-                    </div>
-                    <div class="adv-card" data-animate>
-                        <div class="adv-icon"><i data-lucide="chart-column"></i></div>
-                        <h3>Monthly Reporting</h3>
-                        <p>Simple reports showing spends, leads, costs, learnings, and the next actions we recommend.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="adv-section" id="packages">
-            <div class="container">
-                <div class="section-header" data-animate>
-                    <span class="section-tag">Packages</span>
-                    <h2 class="section-title">Choose the campaign depth you need.</h2>
-                    <p class="section-desc">Ad spend is separate and paid directly to the platform. We manage strategy, setup, creatives, tracking, and optimization.</p>
-                </div>
-                <div class="adv-grid">
-                    <article class="adv-package" data-animate>
-                        <h3>Starter Ads</h3>
-                        <div class="adv-price">₹4,999/mo</div>
-                        <p>For businesses testing paid ads for the first time.</p>
-                        <ul>
-                            <li>One ad channel setup</li>
-                            <li>Basic creative set</li>
-                            <li>Lead form or WhatsApp flow</li>
-                            <li>Monthly performance summary</li>
-                        </ul>
-                        <a href="/?service=advertising&plan=Starter%20Ads#contact" class="btn btn-outline btn-md">Write to Us</a>
-                    </article>
-                    <article class="adv-package featured" data-animate>
-                        <h3>Growth Ads</h3>
-                        <div class="adv-price">₹9,999/mo</div>
-                        <p>For businesses ready to run consistent lead generation.</p>
-                        <ul>
-                            <li>Google or Meta campaign management</li>
-                            <li>Landing page recommendations</li>
-                            <li>Creative testing every month</li>
-                            <li>Tracking and conversion setup</li>
-                        </ul>
-                        <a href="/?service=advertising&plan=Growth%20Ads#contact" class="btn btn-white btn-md">Write to Us</a>
-                    </article>
-                    <article class="adv-package" data-animate>
-                        <h3>Scale Ads</h3>
-                        <div class="adv-price">Custom</div>
-                        <p>For multi-location, ecommerce, SaaS, and bigger monthly budgets.</p>
-                        <ul>
-                            <li>Multi-channel media plan</li>
-                            <li>Landing page and funnel support</li>
-                            <li>Retargeting and audience strategy</li>
-                            <li>Weekly optimization notes</li>
-                        </ul>
-                        <a href="/?service=advertising&plan=Scale%20Ads#contact" class="btn btn-outline btn-md">Write to Us</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="adv-section alt" id="process">
-            <div class="container">
-                <div class="section-header" data-animate>
-                    <span class="section-tag">Process</span>
-                    <h2 class="section-title">From brief to launch without confusion.</h2>
-                </div>
-                <div class="adv-grid">
-                    <div class="adv-step" data-animate>
-                        <div class="step-number">01</div>
-                        <h3>Audit & Goal</h3>
-                        <p>We understand your product, location, audience, offer, current website, and expected lead quality.</p>
-                    </div>
-                    <div class="adv-step" data-animate>
-                        <div class="step-number">02</div>
-                        <h3>Setup & Creative</h3>
-                        <p>We prepare campaign structure, tracking, copy, creatives, and the enquiry path customers will use.</p>
-                    </div>
-                    <div class="adv-step" data-animate>
-                        <div class="step-number">03</div>
-                        <h3>Launch & Improve</h3>
-                        <p>We monitor performance, pause waste, test stronger angles, and report what should happen next.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="adv-cta">
-            <div class="container" data-animate>
-                <span class="section-tag" style="color:var(--accent-warm)">Ready When You Are</span>
-                <h2 class="section-title">Want more customers from ads?</h2>
-                <p class="section-desc">Tell us about your business on the main SA-Flow form. We will reply with the best ad plan, expected setup, and next steps.</p>
-                <a href="/?service=advertising#contact" class="btn btn-white btn-lg">Write to Us</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="/" class="logo">
-                        <span class="logo-icon"><i data-lucide="zap"></i></span>
-                        <span class="logo-text">SA-Flow</span>
-                    </a>
-                    <p>Professional websites, apps, SaaS products, and advertising services for growing businesses.</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-col">
-                        <h4>Services</h4>
-                        <a href="/">Websites</a>
-                        <a href="/#apps">Apps</a>
-                        <a href="saflow_adv.html">Advertising</a>
-                        <a href="/#contact">Contact</a>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Contact</h4>
-                        <a href="mailto:support@saflow.app">support@saflow.app</a>
-                        <a href="mailto:info@saflow.app">info@saflow.app</a>
-                        <a href="tel:+917903535024">+91 79035 35024</a>
-                        <span>Ranchi, Jharkhand, India</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 SA-Flow. All rights reserved. | <a href="https://saflow.app" style="color:rgba(255,255,255,0.5)">saflow.app</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
-    <script src="js/main.js" defer></script>
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            if (window.lucide) {
-                window.lucide.createIcons();
-            }
-        });
-    </script>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<nav>
+  <a href="/" class="nav-logo">Sa<span>flow</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Saflow</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#global">Markets</a></li>
+    <li><a href="/?service=advertising#contact">Contact</a></li>
+  </ul>
+  <a href="/?service=advertising#contact" class="nav-cta">Get a Free Audit -></a>
+</nav>
+<section class="hero">
+  <div class="hero-noise"></div><div class="hero-grid"></div><div class="hero-glow"></div><div class="hero-glow2"></div>
+  <div class="hero-badge">India's Global Marketing Powerhouse</div>
+  <h1 class="hero-headline">WE BUILD<br/><span class="line-orange">CAMPAIGNS</span><br/>THAT <span class="line-outline">CONVERT</span></h1>
+  <div class="hero-sub-row">
+    <p class="hero-desc">Saflow is a <strong>data-driven performance marketing agency</strong> built for global brands. We bring the precision of Indian tech talent and the ambition of world-class strategy — delivering results for clients across the <strong>USA, UK, Germany, UAE,</strong> and beyond.</p>
+    <div class="hero-actions">
+      <a href="/?service=advertising#contact" class="btn-primary">Start a Project <span class="arrow">↗</span></a>
+      <a href="#services" class="btn-ghost">Explore Services ↓</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll to discover</div>
+</section>
+<div class="marquee-section">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item"><span class="marquee-dot"></span> Performance Marketing</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> USA · UK · Germany · UAE · Australia</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Google Ads · Meta Ads · Programmatic</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> 200+ Global Brands Served</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> 24-Hour Delivery Cycle</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> ROI-First Strategy</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> AI-Powered Targeting</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Follow The Sun Workflow</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Performance Marketing</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> USA · UK · Germany · UAE · Australia</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Google Ads · Meta Ads · Programmatic</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> 200+ Global Brands Served</span>
+  </div>
+</div>
+<div class="stats-section">
+  <div class="stat-box reveal"><div class="stat-num"><span class="count-up" data-target="200">0</span>+</div><div class="stat-label">Global Clients Served</div><div class="stat-bar"></div></div>
+  <div class="stat-box reveal" style="transition-delay:.1s"><div class="stat-num"><span class="count-up" data-target="14">0</span></div><div class="stat-label">Countries We Operate In</div><div class="stat-bar"></div></div>
+  <div class="stat-box reveal" style="transition-delay:.2s"><div class="stat-num"><span class="count-up" data-target="340">0</span>%</div><div class="stat-label">Average Client ROI Growth</div><div class="stat-bar"></div></div>
+  <div class="stat-box reveal" style="transition-delay:.3s"><div class="stat-num"><span class="count-up" data-target="48">0</span>h</div><div class="stat-label">Average Campaign Launch Time</div><div class="stat-bar"></div></div>
+</div>
+<section class="services-section section" id="services">
+  <div class="services-header">
+    <div><div class="section-tag reveal">What We Do</div><h2 class="section-title reveal">Services Built For<br/><em>Global Growth</em></h2></div>
+    <p class="section-body reveal" style="max-width:340px">Every service we offer is engineered to maximize your global reach while minimizing your spend — without ever cutting corners on quality.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal"><div class="service-num">01</div><div class="service-icon">↗</div><h3 class="service-name">Performance Marketing</h3><p class="service-desc">Data-driven ad campaigns across Google, Meta, and programmatic platforms. We optimize bids in real-time, eliminate wasted spend, and scale what's working — fast.</p><div class="service-tags"><span class="tag">Google Ads</span><span class="tag">Meta Ads</span><span class="tag">Programmatic</span><span class="tag">PPC</span></div><div class="service-arrow">↗</div></div>
+    <div class="service-card reveal" style="transition-delay:.1s"><div class="service-num">02</div><div class="service-icon">◎</div><h3 class="service-name">SEO & Content Strategy</h3><p class="service-desc">Rank higher, earn trust, and dominate search. We build long-term organic visibility through technically excellent SEO and authority-building content.</p><div class="service-tags"><span class="tag">Technical SEO</span><span class="tag">Link Building</span><span class="tag">Content</span></div><div class="service-arrow">↗</div></div>
+    <div class="service-card reveal" style="transition-delay:.2s"><div class="service-num">03</div><div class="service-icon">▦</div><h3 class="service-name">Creative Content Production</h3><p class="service-desc">Reels, TikToks, static graphics, email newsletters — our in-house studio produces high-volume, platform-native content that beats the algorithm every time.</p><div class="service-tags"><span class="tag">Video Editing</span><span class="tag">Motion Graphics</span><span class="tag">Copywriting</span></div><div class="service-arrow">↗</div></div>
+    <div class="service-card reveal" style="transition-delay:.1s"><div class="service-num">04</div><div class="service-icon">⌁</div><h3 class="service-name">Analytics & Data Intelligence</h3><p class="service-desc">Custom dashboards, GA4 setup, attribution modelling, and weekly intelligence reports. Stop guessing — start knowing exactly what's making you money.</p><div class="service-tags"><span class="tag">GA4</span><span class="tag">Looker Studio</span><span class="tag">Attribution</span></div><div class="service-arrow">↗</div></div>
+    <div class="service-card reveal" style="transition-delay:.2s"><div class="service-num">05</div><div class="service-icon">◇</div><h3 class="service-name">Brand Strategy & Identity</h3><p class="service-desc">Build a brand that foreign markets actually trust. We craft positioning, messaging frameworks, and visual systems that speak globally while feeling local.</p><div class="service-tags"><span class="tag">Brand Identity</span><span class="tag">Positioning</span><span class="tag">Messaging</span></div><div class="service-arrow">↗</div></div>
+    <div class="service-card reveal" style="transition-delay:.3s"><div class="service-num">06</div><div class="service-icon">⊕</div><h3 class="service-name">India Market Entry</h3><p class="service-desc">For foreign brands wanting a slice of India's 1.4B consumers. We navigate the hyper-regional, multi-lingual complexity — and make your brand feel native, not imported.</p><div class="service-tags"><span class="tag">Localization</span><span class="tag">Regional Strategy</span><span class="tag">Market Research</span></div><div class="service-arrow">↗</div></div>
+  </div>
+</section>
+<section class="why-section section" id="why">
+  <div class="why-grid">
+    <div class="why-left reveal-left"><div class="section-tag">Why Choose Us</div><div class="why-big-text">THE<br/><span class="orange">SAFLOW</span><br/><span class="outline">EDGE</span></div><p style="color:var(--txt2);font-size:.9rem;margin-top:2rem;line-height:1.8;font-weight:300;max-width:380px">Six structural advantages that make global brands choose Saflow over local agencies costing 5× more — and deliver better results.</p></div>
+    <div class="why-list reveal">
+      <div class="why-item"><div class="why-item-num">01</div><div><h3 class="why-item-title">Follow-The-Sun Delivery</h3><p class="why-item-desc">Hand us work before you log off in New York or London. Wake up to finished, launch-ready assets. Our 24-hour workflow cycle cuts your time-to-market in half.</p></div></div>
+      <div class="why-item"><div class="why-item-num">02</div><div><h3 class="why-item-title">Engineering-Grade Data Mastery</h3><p class="why-item-desc">India produces more data analysts and engineers per year than most countries produce total graduates. We bring that technical horsepower directly to your ad accounts.</p></div></div>
+      <div class="why-item"><div class="why-item-num">03</div><div><h3 class="why-item-title">5× Cost Efficiency, Zero Quality Cut</h3><p class="why-item-desc">Top SF or NYC agencies bill $15,000–$50,000/month for the same outputs. We deliver identical global standards at a fraction — giving your budget more runway and reach.</p></div></div>
+      <div class="why-item"><div class="why-item-num">04</div><div><h3 class="why-item-title">Native English + Digital Fluency</h3><p class="why-item-desc">Our team grew up on the same internet culture, design trends, and social platforms as your target audience. Zero communication friction. Zero cultural translation needed.</p></div></div>
+      <div class="why-item"><div class="why-item-num">05</div><div><h3 class="why-item-title">High-Volume Content Engine</h3><p class="why-item-desc">Modern algorithms are insatiable. We run a full in-house studio — video editors, animators, designers, copywriters — built to produce at the volume today's platforms demand.</p></div></div>
+      <div class="why-item" style="border-bottom:none"><div class="why-item-num">06</div><div><h3 class="why-item-title">Real India Market Access</h3><p class="why-item-desc">The Indian market is 1.4 billion consumers across 22 official languages and dozens of regional cultures. We're not just a gateway — we're your local insider advantage.</p></div></div>
+    </div>
+  </div>
+</section>
+<section class="process-section section" id="process">
+  <div class="section-tag reveal">How We Work</div><h2 class="section-title reveal">From Brief to <em>Launch</em><br/>in 5 Steps</h2>
+  <div class="process-steps">
+    <div class="process-step reveal"><div class="process-step-num">01</div><h4 class="process-step-title">Discovery & Audit</h4><p class="process-step-desc">We deep-dive into your current performance, competitors, and target audience before touching a single ad.</p></div>
+    <div class="process-step reveal" style="transition-delay:.1s"><div class="process-step-num">02</div><h4 class="process-step-title">Strategy Blueprint</h4><p class="process-step-desc">Custom growth strategy — channels, budgets, creative angles, and 90-day milestones. No guesswork.</p></div>
+    <div class="process-step reveal" style="transition-delay:.2s"><div class="process-step-num">03</div><h4 class="process-step-title">Creative Production</h4><p class="process-step-desc">Our studio builds the assets — ads, landing pages, video content — optimized for each platform and market.</p></div>
+    <div class="process-step reveal" style="transition-delay:.3s"><div class="process-step-num">04</div><h4 class="process-step-title">Launch & Optimize</h4><p class="process-step-desc">Go live. We monitor every metric in real-time, killing what doesn't work, scaling what does — daily.</p></div>
+    <div class="process-step reveal" style="transition-delay:.4s"><div class="process-step-num">05</div><h4 class="process-step-title">Report & Scale</h4><p class="process-step-desc">Weekly transparency reports with plain-English insights. We show you exactly where every dollar went and what it earned.</p></div>
+  </div>
+</section>
+<section class="global-section section" id="global">
+  <div class="global-inner">
+    <div class="section-tag reveal">Global Reach</div><h2 class="section-title reveal">We Speak Your<br/><em>Market's Language</em></h2>
+    <p class="section-body reveal" style="margin:0 auto 1rem;text-align:center">From e-commerce brands in Berlin to SaaS startups in Austin — we've run campaigns that speak directly to each market's culture, not just its language.</p>
+    <div class="markets-grid reveal">
+      <div class="market-chip"><span class="market-flag">🇺🇸</span> United States <span class="market-dot"></span></div><div class="market-chip"><span class="market-flag">🇬🇧</span> United Kingdom <span class="market-dot"></span></div><div class="market-chip"><span class="market-flag">🇩🇪</span> Germany <span class="market-dot"></span></div><div class="market-chip"><span class="market-flag">🇦🇪</span> United Arab Emirates <span class="market-dot"></span></div><div class="market-chip"><span class="market-flag">🇦🇺</span> Australia <span class="market-dot"></span></div><div class="market-chip"><span class="market-flag">🇨🇦</span> Canada <span class="market-dot"></span></div><div class="market-chip"><span class="market-flag">🇸🇬</span> Singapore <span class="market-dot"></span></div><div class="market-chip"><span class="market-flag">🇳🇱</span> Netherlands <span class="market-dot"></span></div><div class="market-chip"><span class="market-flag">🇫🇷</span> France <span class="market-dot"></span></div><div class="market-chip"><span class="market-flag">🇮🇳</span> India (Domestic) <span class="market-dot"></span></div>
+    </div>
+  </div>
+</section>
+<section class="topics-section section" id="topics">
+  <div class="section-tag reveal">Content That Catches Eyes</div><h2 class="section-title reveal">The Ideas That Make<br/><em>Clients Come to You</em></h2>
+  <div class="topics-grid">
+    <div class="topic-card reveal"><div class="topic-icon-wrap">🔥</div><div><h4 class="topic-title">Why Your Western Agency Is Overcharging You</h4><p class="topic-desc">A direct, honest breakdown that speaks to client pain — and positions Saflow as the smarter alternative.</p></div></div>
+    <div class="topic-card reveal" style="transition-delay:.1s"><div class="topic-icon-wrap">📊</div><div><h4 class="topic-title">Real Campaign Breakdowns With Actual ROI</h4><p class="topic-desc">Show real numbers. $10K budget → $67K revenue. Proof beats any promise.</p></div></div>
+    <div class="topic-card reveal" style="transition-delay:.1s"><div class="topic-icon-wrap">🌏</div><div><h4 class="topic-title">Mistakes Foreign Brands Make Entering India</h4><p class="topic-desc">Insider knowledge that positions Saflow as the expert guide — attracting inbound from global companies.</p></div></div>
+    <div class="topic-card reveal" style="transition-delay:.2s"><div class="topic-icon-wrap">🤖</div><div><h4 class="topic-title">What's Actually Working in Paid Ads This Month</h4><p class="topic-desc">Real-time trend breakdowns signal that we're current, agile, and always ahead of the algorithm.</p></div></div>
+    <div class="topic-card reveal" style="transition-delay:.2s"><div class="topic-icon-wrap">💰</div><div><h4 class="topic-title">Radical Transparency: Our Pricing, Explained</h4><p class="topic-desc">Posting transparent pricing builds instant trust. It filters bad-fit clients and attracts serious buyers.</p></div></div>
+    <div class="topic-card reveal" style="transition-delay:.3s"><div class="topic-icon-wrap">⚡</div><div><h4 class="topic-title">How We Deliver Results in 48 Hours</h4><p class="topic-desc">Behind-the-scenes process content that showcases our speed, workflow, and relentless execution.</p></div></div>
+  </div>
+</section>
+<section class="cta-section" id="contact">
+  <div class="cta-glow"></div><h2 class="cta-headline reveal">READY TO<br/><span class="line2">GROW GLOBAL?</span></h2>
+  <p class="cta-sub reveal">Let's build something that makes your competitors uncomfortable.</p>
+  <div class="cta-actions reveal"><a href="/?service=advertising#contact" class="btn-big btn-big-primary">Start a Free Audit ↗</a><a href="#services" class="btn-big btn-big-ghost">View Services</a></div>
+  <div class="contact-info reveal">
+    <div class="contact-item"><span class="contact-label">Email</span><span class="contact-val">support@saflow.app</span></div>
+    <div class="contact-item"><span class="contact-label">WhatsApp</span><span class="contact-val">+91 79035 35024</span></div>
+    <div class="contact-item"><span class="contact-label">Response Time</span><span class="contact-val" style="color:var(--accent2)">Under 4 Hours</span></div>
+    <div class="contact-item"><span class="contact-label">Headquarters</span><span class="contact-val">India · Global</span></div>
+  </div>
+</section>
+<footer>
+  <div class="footer-top">
+    <div><div class="footer-brand-name">Sa<span>flow</span></div><p class="footer-brand-desc">India's global performance marketing agency. We combine engineering-grade data mastery with world-class creative output — delivering measurable growth for brands across 14+ countries.</p><div class="footer-socials"><a href="#" class="social-btn">in</a><a href="#" class="social-btn">tw</a><a href="#" class="social-btn">ig</a><a href="#" class="social-btn">yt</a></div></div>
+    <div><h4 class="footer-col-title">Services</h4><ul class="footer-links"><li><a href="#services">Performance Marketing</a></li><li><a href="#services">SEO & Content</a></li><li><a href="#services">Creative Production</a></li><li><a href="#services">Analytics & Data</a></li><li><a href="#services">Brand Strategy</a></li><li><a href="#services">India Market Entry</a></li></ul></div>
+    <div><h4 class="footer-col-title">Company</h4><ul class="footer-links"><li><a href="/">About Saflow</a></li><li><a href="#topics">Case Studies</a></li><li><a href="#process">Our Process</a></li><li><a href="/?service=advertising#contact">Pricing</a></li><li><a href="/blog/">Blog</a></li><li><a href="/?service=advertising#contact">Careers</a></li></ul></div>
+    <div><h4 class="footer-col-title">Markets</h4><ul class="footer-links"><li><a href="#global">USA & Canada</a></li><li><a href="#global">UK & Europe</a></li><li><a href="#global">Middle East & UAE</a></li><li><a href="#global">Australia & APAC</a></li><li><a href="#global">Indian Market</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p class="footer-copy">© 2026 Saflow. All rights reserved. Built in India for the world.</p><div class="footer-badge">Crafted with precision · <span>Fuelled by results</span></div></div>
+</footer>
+<script>
+const cursor=document.getElementById('cursor');const ring=document.getElementById('cursorRing');let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;if(cursor){cursor.style.left=mx+'px';cursor.style.top=my+'px'}});
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;if(ring){ring.style.left=Math.round(rx)+'px';ring.style.top=Math.round(ry)+'px'}requestAnimationFrame(animRing)}animRing();
+document.querySelectorAll('a,button,.service-card,.topic-card,.market-chip').forEach(el=>{el.addEventListener('mouseenter',()=>{if(ring){ring.style.width='60px';ring.style.height='60px';ring.style.borderColor='rgba(244,185,66,.85)'}});el.addEventListener('mouseleave',()=>{if(ring){ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(244,185,66,.55)'}})});
+const reveals=document.querySelectorAll('.reveal,.reveal-left');const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.12});reveals.forEach(el=>io.observe(el));
+const counters=document.querySelectorAll('.count-up');const cio=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target,target=+el.dataset.target,dur=1800;let start=null;function step(ts){if(!start)start=ts;const prog=Math.min((ts-start)/dur,1);const ease=1-Math.pow(1-prog,3);el.textContent=Math.round(ease*target);if(prog<1)requestAnimationFrame(step)}requestAnimationFrame(step);cio.unobserve(el)}})},{threshold:.5});counters.forEach(c=>cio.observe(c));
+window.addEventListener('scroll',()=>{document.querySelector('nav').style.borderBottomColor=window.scrollY>50?'rgba(255,255,255,.12)':'rgba(247,241,230,.10)'});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+</script>
 </body>
 </html>
