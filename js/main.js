@@ -104,36 +104,67 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- Prefill contact form from service page links ---
+    const params = new URLSearchParams(window.location.search);
+    const hashParams = new URLSearchParams((window.location.hash.split('?')[1] || ''));
+    const serviceParam = params.get('service') || hashParams.get('service');
+    const planParam = params.get('plan') || hashParams.get('plan');
+
+    if (serviceParam === 'advertising') {
+        const business = document.getElementById('business');
+        const plan = document.getElementById('plan');
+        const message = document.getElementById('message');
+
+        if (business) business.value = 'Advertising & Digital Marketing';
+        if (plan && planParam) {
+            const matchedOption = Array.from(plan.options).find(option => option.textContent.toLowerCase().includes(planParam.toLowerCase()));
+            if (matchedOption) plan.value = matchedOption.value;
+        }
+        if (message && !message.value) {
+            message.value = 'I am interested in SA-Flow advertising services. Please share the best plan and next steps.';
+        }
+    }
 });
 
 // --- Contact Form Handler ---
-function handleSubmit(e) {
+async function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
-    const name = form.querySelector('#name').value;
-    const phone = form.querySelector('#phone').value;
-    const business = form.querySelector('#business').value;
-    const plan = form.querySelector('#plan').value;
-    const message = form.querySelector('#message').value;
-
-    // Construct email
-    const mailSubject = encodeURIComponent(`Website Enquiry — ${business}`);
-    const mailBody = encodeURIComponent(
-        `Name: ${name}\n${phone ? 'Phone: ' + phone + '\n' : ''}Business: ${business}\nPlan: ${plan}\n${message ? 'Message: ' + message : ''}`
-    );
-
-    // Show success state
     const btn = form.querySelector('button[type="submit"]');
     const originalText = btn.textContent;
-    btn.textContent = '✓ Enquiry Sent!';
-    btn.style.background = '#22c55e';
 
-    // Open email client
-    window.location.href = `mailto:saflowtech@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+    // Show loading state
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
 
-    setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        form.reset();
-    }, 3000);
+    try {
+        const formData = new FormData(form);
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            btn.textContent = '✓ Enquiry Sent!';
+            btn.style.background = '#22c55e';
+            form.reset();
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+                btn.disabled = false;
+            }, 4000);
+        } else {
+            throw new Error(data.message || 'Submission failed');
+        }
+    } catch (err) {
+        btn.textContent = '✗ Failed — Try Again';
+        btn.style.background = '#ef4444';
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+        }, 3000);
+    }
 }

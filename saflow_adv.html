@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertising & Digital Marketing Services | SA-Flow</title>
+    <meta name="description" content="SA-Flow advertising services for local businesses: Google Ads, Meta Ads, creatives, landing pages, lead generation, retargeting, and monthly growth reporting.">
+    <meta name="keywords" content="advertising services ranchi, digital marketing ranchi, Google Ads agency, Meta Ads India, lead generation, SA-Flow advertising">
+    <meta property="og:title" content="SA-Flow Advertising & Digital Marketing Services">
+    <meta property="og:description" content="Launch campaigns that bring calls, WhatsApp leads, bookings, and sales for your business.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://saflow.app/saflow_adv.html">
+    <meta property="og:image" content="https://saflow.app/og-image.png">
+    <meta name="theme-color" content="#0F766E">
+    <link rel="canonical" href="https://saflow.app/saflow_adv.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .adv-hero {
+            min-height: 92vh;
+            padding: 130px 0 72px;
+            background:
+                radial-gradient(circle at 82% 18%, rgba(244,185,66,0.28), transparent 34%),
+                radial-gradient(circle at 12% 78%, rgba(15,118,110,0.18), transparent 30%),
+                linear-gradient(135deg, #F7F1E6 0%, #FFFFFF 48%, #E3F7F2 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .adv-hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+            gap: 56px;
+            align-items: center;
+        }
+        .adv-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 14px;
+            border-radius: var(--radius-full);
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+        .adv-title {
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 1;
+            letter-spacing: -0.055em;
+            font-weight: 900;
+            margin-bottom: 24px;
+            color: var(--ink);
+        }
+        .adv-title span {
+            background: linear-gradient(135deg, var(--accent), var(--accent-warm), var(--accent-coral));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .adv-lede {
+            font-size: clamp(17px, 2vw, 20px);
+            color: var(--text-secondary);
+            line-height: 1.75;
+            max-width: 650px;
+            margin-bottom: 34px;
+        }
+        .adv-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 42px;
+        }
+        .adv-proof {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .adv-proof-card,
+        .adv-panel,
+        .adv-card,
+        .adv-package,
+        .adv-step {
+            background: rgba(255,255,255,0.82);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+        .adv-proof-card {
+            padding: 18px;
+        }
+        .adv-proof-card strong {
+            display: block;
+            font-size: 26px;
+            line-height: 1;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+        .adv-proof-card span {
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .adv-panel {
+            position: relative;
+            padding: 28px;
+            overflow: hidden;
+        }
+        .adv-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-warm), var(--accent-coral));
+        }
+        .adv-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+        .adv-panel-title {
+            font-weight: 800;
+            font-size: 18px;
+        }
+        .adv-status {
+            color: #22c55e;
+            font-size: 13px;
+            font-weight: 800;
+        }
+        .adv-metric {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 14px;
+            align-items: center;
+            padding: 16px 0;
+            border-top: 1px solid var(--border-light);
+        }
+        .adv-metric:first-of-type {
+            border-top: 0;
+        }
+        .adv-metric span {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .adv-metric strong {
+            color: var(--ink);
+            font-size: 22px;
+        }
+        .adv-bar {
+            grid-column: 1 / -1;
+            height: 9px;
+            border-radius: var(--radius-full);
+            background: var(--accent-light);
+            overflow: hidden;
+        }
+        .adv-bar i {
+            display: block;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+        }
+        .adv-section {
+            padding: 110px 0;
+        }
+        .adv-section.alt {
+            background: var(--bg-white);
+        }
+        .adv-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .adv-card,
+        .adv-package,
+        .adv-step {
+            padding: 28px;
+        }
+        .adv-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            color: var(--accent);
+            background: linear-gradient(135deg, var(--accent-light), rgba(244,185,66,0.22));
+            border: 1px solid rgba(15,118,110,0.14);
+        }
+        .adv-card h3,
+        .adv-package h3,
+        .adv-step h3 {
+            font-size: 20px;
+            line-height: 1.25;
+            margin-bottom: 10px;
+        }
+        .adv-card p,
+        .adv-step p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        .adv-package {
+            display: flex;
+            flex-direction: column;
+        }
+        .adv-package.featured {
+            background: linear-gradient(160deg, var(--accent), #1F3D36);
+            color: #fff;
+            transform: translateY(-10px);
+            box-shadow: 0 22px 46px rgba(15,118,110,0.26);
+        }
+        .adv-price {
+            font-size: 34px;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            margin: 10px 0 18px;
+        }
+        .adv-package p,
+        .adv-package li {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+        .adv-package.featured p,
+        .adv-package.featured li {
+            color: rgba(255,255,255,0.78);
+        }
+        .adv-package ul {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+            margin: 8px 0 26px;
+        }
+        .adv-package li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: 900;
+            margin-right: 10px;
+        }
+        .adv-package.featured li::before {
+            color: var(--accent-warm);
+        }
+        .adv-package .btn {
+            margin-top: auto;
+        }
+        .adv-cta {
+            padding: 105px 0;
+            background:
+                radial-gradient(circle at 16% 20%, rgba(244,185,66,0.18), transparent 28%),
+                linear-gradient(135deg, #17211F 0%, #1F3D36 100%);
+            color: #fff;
+            text-align: center;
+        }
+        .adv-cta .section-title,
+        .adv-cta .section-desc {
+            color: #fff;
+        }
+        .adv-cta .section-desc {
+            margin: 0 auto 30px;
+            color: rgba(255,255,255,0.72);
+        }
+        @media (max-width: 1024px) {
+            .adv-hero-grid,
+            .adv-grid {
+                grid-template-columns: 1fr;
+            }
+            .adv-panel {
+                max-width: 560px;
+            }
+            .adv-package.featured {
+                transform: none;
+            }
+        }
+        @media (max-width: 720px) {
+            .adv-hero {
+                min-height: auto;
+                padding: 110px 0 62px;
+            }
+            .adv-proof {
+                grid-template-columns: 1fr;
+            }
+            .adv-actions {
+                flex-direction: column;
+            }
+            .adv-actions .btn {
+                width: 100%;
+            }
+            .adv-section,
+            .adv-cta {
+                padding: 78px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="/" class="logo" aria-label="SA-Flow Home">
+                <span class="logo-icon" aria-hidden="true"><i data-lucide="zap"></i></span>
+                <span class="logo-text">SA-Flow</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="/">Home</a>
+                <a href="#services">Services</a>
+                <a href="#packages">Packages</a>
+                <a href="#process">Process</a>
+                <a href="/#contact">Contact</a>
+            </div>
+            <a href="/?service=advertising#contact" class="btn btn-primary btn-sm nav-cta">Write to Us</a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="adv-hero">
+            <div class="container adv-hero-grid">
+                <div data-animate>
+                    <div class="adv-kicker"><span class="badge-dot"></span> Advertising Service</div>
+                    <h1 class="adv-title">Ads that bring <span>real enquiries.</span></h1>
+                    <p class="adv-lede">SA-Flow helps local businesses turn attention into calls, WhatsApp leads, bookings, and repeat customers through focused Google Ads, Meta Ads, landing pages, and practical monthly reporting.</p>
+                    <div class="adv-actions">
+                        <a href="/?service=advertising#contact" class="btn btn-primary btn-lg">Write to Us</a>
+                        <a href="#packages" class="btn btn-ghost btn-lg">View Packages</a>
+                    </div>
+                    <div class="adv-proof">
+                        <div class="adv-proof-card">
+                            <strong>30d</strong>
+                            <span>Launch-ready campaign cycle</span>
+                        </div>
+                        <div class="adv-proof-card">
+                            <strong>4+</strong>
+                            <span>Channels planned together</span>
+                        </div>
+                        <div class="adv-proof-card">
+                            <strong>1</strong>
+                            <span>Website, ads, and leads team</span>
+                        </div>
+                    </div>
+                </div>
+                <aside class="adv-panel" data-animate>
+                    <div class="adv-panel-header">
+                        <div>
+                            <div class="adv-panel-title">Campaign Control Room</div>
+                            <p style="color:var(--text-secondary);font-size:14px">A clear view of what is working.</p>
+                        </div>
+                        <span class="adv-status">Live</span>
+                    </div>
+                    <div class="adv-metric">
+                        <span>Lead Quality</span>
+                        <strong>86%</strong>
+                        <div class="adv-bar"><i style="width:86%"></i></div>
+                    </div>
+                    <div class="adv-metric">
+                        <span>Creative Testing</span>
+                        <strong>12</strong>
+                        <div class="adv-bar"><i style="width:72%"></i></div>
+                    </div>
+                    <div class="adv-metric">
+                        <span>Budget Efficiency</span>
+                        <strong>3.4x</strong>
+                        <div class="adv-bar"><i style="width:78%"></i></div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="adv-section alt" id="services">
+            <div class="container">
+                <div class="section-header" data-animate>
+                    <span class="section-tag">What We Run</span>
+                    <h2 class="section-title">Advertising support for the whole funnel.</h2>
+                    <p class="section-desc">We keep the work practical: get found, get clicked, get contacted, and know where your money went.</p>
+                </div>
+                <div class="adv-grid">
+                    <div class="adv-card" data-animate>
+                        <div class="adv-icon"><i data-lucide="search"></i></div>
+                        <h3>Google Search Ads</h3>
+                        <p>Capture high-intent buyers when they search for your service, product, brand, or location.</p>
+                    </div>
+                    <div class="adv-card" data-animate>
+                        <div class="adv-icon"><i data-lucide="megaphone"></i></div>
+                        <h3>Meta Ads</h3>
+                        <p>Run Facebook and Instagram campaigns with creatives built for calls, messages, visits, and sales.</p>
+                    </div>
+                    <div class="adv-card" data-animate>
+                        <div class="adv-icon"><i data-lucide="layout-dashboard"></i></div>
+                        <h3>Landing Pages</h3>
+                        <p>Build fast, focused pages that match the ad promise and make it easy for customers to enquire.</p>
+                    </div>
+                    <div class="adv-card" data-animate>
+                        <div class="adv-icon"><i data-lucide="pen-tool"></i></div>
+                        <h3>Creative Production</h3>
+                        <p>Static ads, short videos, offer banners, and copy angles designed around your business goals.</p>
+                    </div>
+                    <div class="adv-card" data-animate>
+                        <div class="adv-icon"><i data-lucide="repeat-2"></i></div>
+                        <h3>Retargeting</h3>
+                        <p>Bring back people who visited your website, clicked your ads, or showed interest earlier.</p>
+                    </div>
+                    <div class="adv-card" data-animate>
+                        <div class="adv-icon"><i data-lucide="chart-column"></i></div>
+                        <h3>Monthly Reporting</h3>
+                        <p>Simple reports showing spends, leads, costs, learnings, and the next actions we recommend.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="adv-section" id="packages">
+            <div class="container">
+                <div class="section-header" data-animate>
+                    <span class="section-tag">Packages</span>
+                    <h2 class="section-title">Choose the campaign depth you need.</h2>
+                    <p class="section-desc">Ad spend is separate and paid directly to the platform. We manage strategy, setup, creatives, tracking, and optimization.</p>
+                </div>
+                <div class="adv-grid">
+                    <article class="adv-package" data-animate>
+                        <h3>Starter Ads</h3>
+                        <div class="adv-price">₹4,999/mo</div>
+                        <p>For businesses testing paid ads for the first time.</p>
+                        <ul>
+                            <li>One ad channel setup</li>
+                            <li>Basic creative set</li>
+                            <li>Lead form or WhatsApp flow</li>
+                            <li>Monthly performance summary</li>
+                        </ul>
+                        <a href="/?service=advertising&plan=Starter%20Ads#contact" class="btn btn-outline btn-md">Write to Us</a>
+                    </article>
+                    <article class="adv-package featured" data-animate>
+                        <h3>Growth Ads</h3>
+                        <div class="adv-price">₹9,999/mo</div>
+                        <p>For businesses ready to run consistent lead generation.</p>
+                        <ul>
+                            <li>Google or Meta campaign management</li>
+                            <li>Landing page recommendations</li>
+                            <li>Creative testing every month</li>
+                            <li>Tracking and conversion setup</li>
+                        </ul>
+                        <a href="/?service=advertising&plan=Growth%20Ads#contact" class="btn btn-white btn-md">Write to Us</a>
+                    </article>
+                    <article class="adv-package" data-animate>
+                        <h3>Scale Ads</h3>
+                        <div class="adv-price">Custom</div>
+                        <p>For multi-location, ecommerce, SaaS, and bigger monthly budgets.</p>
+                        <ul>
+                            <li>Multi-channel media plan</li>
+                            <li>Landing page and funnel support</li>
+                            <li>Retargeting and audience strategy</li>
+                            <li>Weekly optimization notes</li>
+                        </ul>
+                        <a href="/?service=advertising&plan=Scale%20Ads#contact" class="btn btn-outline btn-md">Write to Us</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="adv-section alt" id="process">
+            <div class="container">
+                <div class="section-header" data-animate>
+                    <span class="section-tag">Process</span>
+                    <h2 class="section-title">From brief to launch without confusion.</h2>
+                </div>
+                <div class="adv-grid">
+                    <div class="adv-step" data-animate>
+                        <div class="step-number">01</div>
+                        <h3>Audit & Goal</h3>
+                        <p>We understand your product, location, audience, offer, current website, and expected lead quality.</p>
+                    </div>
+                    <div class="adv-step" data-animate>
+                        <div class="step-number">02</div>
+                        <h3>Setup & Creative</h3>
+                        <p>We prepare campaign structure, tracking, copy, creatives, and the enquiry path customers will use.</p>
+                    </div>
+                    <div class="adv-step" data-animate>
+                        <div class="step-number">03</div>
+                        <h3>Launch & Improve</h3>
+                        <p>We monitor performance, pause waste, test stronger angles, and report what should happen next.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="adv-cta">
+            <div class="container" data-animate>
+                <span class="section-tag" style="color:var(--accent-warm)">Ready When You Are</span>
+                <h2 class="section-title">Want more customers from ads?</h2>
+                <p class="section-desc">Tell us about your business on the main SA-Flow form. We will reply with the best ad plan, expected setup, and next steps.</p>
+                <a href="/?service=advertising#contact" class="btn btn-white btn-lg">Write to Us</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon"><i data-lucide="zap"></i></span>
+                        <span class="logo-text">SA-Flow</span>
+                    </a>
+                    <p>Professional websites, apps, SaaS products, and advertising services for growing businesses.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <a href="/">Websites</a>
+                        <a href="/#apps">Apps</a>
+                        <a href="saflow_adv.html">Advertising</a>
+                        <a href="/#contact">Contact</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contact</h4>
+                        <a href="mailto:support@saflow.app">support@saflow.app</a>
+                        <a href="mailto:info@saflow.app">info@saflow.app</a>
+                        <a href="tel:+917903535024">+91 79035 35024</a>
+                        <span>Ranchi, Jharkhand, India</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SA-Flow. All rights reserved. | <a href="https://saflow.app" style="color:rgba(255,255,255,0.5)">saflow.app</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
