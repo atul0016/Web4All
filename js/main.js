@@ -112,10 +112,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const planParam = params.get('plan') || hashParams.get('plan');
 
     if (serviceParam === 'advertising') {
+        const title = document.getElementById('contactTitle');
+        const desc = document.getElementById('contactDesc');
+        const subject = document.querySelector('input[name="subject"]');
         const business = document.getElementById('business');
         const plan = document.getElementById('plan');
         const message = document.getElementById('message');
 
+        if (title) title.innerHTML = 'Get a clear audit of<br>your growth channels.';
+        if (desc) desc.textContent = 'Share your website, ad accounts, or current marketing challenge. We will review the opportunity and reply with honest next steps, not a generic sales pitch.';
+        if (subject) subject.value = 'New Advertising Audit Request — SA-Flow';
         if (business) business.value = 'Advertising & Digital Marketing';
         if (plan && planParam) {
             const matchedOption = Array.from(plan.options).find(option => option.textContent.toLowerCase().includes(planParam.toLowerCase()));
