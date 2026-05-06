@@ -151,6 +151,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;al
 .money-fill{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--accent),var(--accent2))}
 .money-fill.low{background:linear-gradient(90deg,rgba(244,185,66,.42),rgba(244,185,66,.78))}
 .money-price{text-align:right;color:var(--txt);font-weight:800}
+.client-pricing{background:var(--bg2)}
+.pricing-intro{display:grid;grid-template-columns:minmax(0,.9fr) minmax(320px,.6fr);gap:2rem;align-items:end;margin-bottom:2.5rem}
+.pricing-proof{border:1px solid rgba(244,185,66,.22);background:rgba(244,185,66,.07);border-radius:18px;padding:1.5rem}
+.pricing-proof strong{display:block;font-family:var(--font-head);font-size:clamp(2rem,5vw,3.8rem);line-height:1;color:var(--accent2);margin-bottom:.45rem}
+.pricing-proof span{display:block;color:var(--txt);font-weight:800;margin-bottom:.35rem}
+.pricing-proof p{color:var(--txt2);font-size:.9rem;line-height:1.65}
+.country-savings-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.country-saving-card{background:var(--bg);padding:1.5rem;display:grid;gap:.85rem}
+.country-top{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.country-name{font-family:var(--font-head);font-weight:800;color:var(--txt);font-size:1.05rem}
+.country-flag{font-size:1.35rem}
+.country-rate{font-family:var(--font-head);font-size:1.25rem;font-weight:800;color:var(--txt)}
+.country-rate small{display:block;color:var(--txt2);font-size:.72rem;font-weight:700;margin-top:.2rem}
+.saflow-rate{color:var(--accent2);font-weight:800}
+.save-chip{width:max-content;max-width:100%;padding:.32rem .65rem;border-radius:999px;background:rgba(57,211,83,.12);border:1px solid rgba(57,211,83,.2);color:#7EF3C0;font-size:.72rem;font-weight:800}
+.country-bar{height:9px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.country-bar span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.service-price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2.5rem}
+.service-price-card{background:var(--bg);padding:1.5rem}
+.service-price-card h3{font-family:var(--font-head);font-size:1.05rem;color:var(--txt);margin-bottom:1rem}
+.price-compare-row{display:grid;grid-template-columns:1fr auto;gap:1rem;padding:.7rem 0;border-top:1px solid var(--border);font-size:.88rem}
+.price-compare-row:first-of-type{border-top:0}
+.price-compare-row span:first-child{color:var(--txt2)}
+.price-compare-row span:last-child{font-weight:800;color:var(--txt);text-align:right}
+.price-compare-row.saflow span:last-child{color:var(--accent2)}
+.client-line{margin-top:2rem;color:var(--txt);font-size:1rem;line-height:1.8;max-width:860px}
+.client-line strong{color:var(--accent2)}
 .playbook-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
 .playbook-step{background:var(--bg2);padding:2rem}
 .playbook-step strong{display:block;font-family:var(--font-head);font-size:2.2rem;color:rgba(244,185,66,.36);line-height:1;margin-bottom:1rem}
@@ -246,8 +273,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 5% 2
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
 .reveal-left.visible{opacity:1;transform:translateX(0)}
-@media(max-width:1024px){.hero-inner{grid-template-columns:1fr}.hero-visual{min-height:430px;max-width:680px}.services-grid{grid-template-columns:repeat(2,1fr)}.atlas-grid,.atlas-grid.two,.atlas-grid.four,.playbook-steps,.money-graph{grid-template-columns:repeat(2,1fr)}.why-grid{grid-template-columns:1fr;gap:3rem}.why-left{position:static}.process-steps{grid-template-columns:repeat(3,1fr)}.process-step:nth-child(3)::after{display:none}.footer-top{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){body{cursor:auto}.cursor,.cursor-ring{display:none}nav .nav-links{display:none}.nav-logo{font-size:1.2rem}.stats-section{grid-template-columns:repeat(2,1fr)}.services-grid,.atlas-grid,.atlas-grid.two,.atlas-grid.four,.playbook-steps,.comparison-grid,.money-graph{grid-template-columns:1fr}.topics-grid{grid-template-columns:1fr}.process-steps{grid-template-columns:1fr}.process-step::after{display:none}.services-header{flex-direction:column;align-items:flex-start}.footer-top{grid-template-columns:1fr}.hero-sub-row{flex-direction:column;align-items:flex-start}.hero-actions{align-items:flex-start}.hero{padding-top:7rem}.hero-headline{font-size:clamp(2.45rem,12vw,4rem)}.hero-visual{min-height:520px}.ad-card.search{left:4%;bottom:20%;width:190px}.ad-card.social{right:4%;bottom:4%;width:195px}.ad-card.creative{right:4%;top:4%;width:178px}.footer-bottom{align-items:flex-start}}
+@media(max-width:1024px){.hero-inner{grid-template-columns:1fr}.hero-visual{min-height:430px;max-width:680px}.services-grid{grid-template-columns:repeat(2,1fr)}.atlas-grid,.atlas-grid.two,.atlas-grid.four,.playbook-steps,.money-graph,.pricing-intro,.service-price-grid{grid-template-columns:repeat(2,1fr)}.country-savings-grid{grid-template-columns:repeat(3,1fr)}.why-grid{grid-template-columns:1fr;gap:3rem}.why-left{position:static}.process-steps{grid-template-columns:repeat(3,1fr)}.process-step:nth-child(3)::after{display:none}.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){body{cursor:auto}.cursor,.cursor-ring{display:none}nav{height:64px;padding:0 1rem}.nav-links{display:none}.nav-cta{padding:.55rem .9rem;font-size:.78rem}.nav-logo{font-size:1.05rem;white-space:normal;line-height:1.05}.section{padding:4.5rem 1.2rem}.stats-section{grid-template-columns:repeat(2,1fr);padding:3rem 1.2rem}.stat-box{padding:1.5rem}.services-grid,.atlas-grid,.atlas-grid.two,.atlas-grid.four,.playbook-steps,.comparison-grid,.money-graph,.pricing-intro,.country-savings-grid,.service-price-grid{grid-template-columns:1fr}.topics-grid{grid-template-columns:1fr}.process-steps{grid-template-columns:1fr}.process-step::after{display:none}.services-header{flex-direction:column;align-items:flex-start}.footer-top{grid-template-columns:1fr}.hero-sub-row{flex-direction:column;align-items:flex-start}.hero-actions{align-items:stretch;width:100%}.hero-actions a{justify-content:center;width:100%}.hero{min-height:auto;padding:6rem 1.2rem 3rem}.hero-inner{gap:2rem}.hero-copy{max-width:none}.hero-badge{width:100%;font-size:.64rem;line-height:1.3;white-space:normal}.hero-headline{font-size:clamp(2.45rem,13vw,4rem);max-width:100%}.hero-desc{font-size:.95rem}.hero-scroll{display:none}.hero-visual{min-height:360px;max-width:none}.ad-dashboard{left:4%;right:4%;top:5%;padding:16px}.metric-row{grid-template-columns:1fr 62px;gap:10px}.ad-card{padding:14px}.ad-card.search{left:4%;bottom:18%;width:175px}.ad-card.social{right:4%;bottom:2%;width:178px}.ad-card.creative{right:4%;top:0;width:165px}.money-row{grid-template-columns:64px 1fr 62px;gap:.5rem}.footer-bottom{align-items:flex-start}}
+@media(max-width:480px){.nav-cta{display:none}.hero-visual{display:none}.hero-headline{font-size:clamp(2.35rem,15vw,3.5rem)}.stats-section{grid-template-columns:1fr}.money-item,.atlas-card,.service-price-card,.country-saving-card{padding:1.25rem}.price-compare-row{grid-template-columns:1fr}.price-compare-row span:last-child{text-align:left}.cta-actions a{width:100%;justify-content:center}}
 </style>
 </head>
 <body>
@@ -257,6 +285,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 5% 2
   <a href="/" class="nav-logo">Sa<span>flow</span> Advertising</a>
   <ul class="nav-links">
     <li><a href="#atlas">Atlas</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#offers">Offers</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#playbook">Playbook</a></li>
@@ -385,6 +414,79 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 5% 2
     <div class="atlas-card"><div class="atlas-num">Retainers</div><div class="atlas-name">3-4x agency cost leverage</div><p class="atlas-desc">This is where Saflow wins: lower operating cost without lowering campaign standards.</p></div>
     <div class="atlas-card"><div class="atlas-num">Run-rate</div><div class="atlas-name">Lower blended CAC system</div><p class="atlas-desc">Premium targeting plus efficient operations creates the actual advantage.</p></div>
   </div>
+</section>
+
+<section class="client-pricing section" id="pricing">
+  <div class="pricing-intro">
+    <div>
+      <div class="section-tag reveal">Country-Wise Price Difference</div>
+      <h2 class="section-title reveal">What clients pay locally vs.<br/><em>what Saflow delivers</em></h2>
+      <p class="atlas-lead reveal">Most clients do not want an agency history lesson. They want to know: what will this cost, what do I save, and whether the output will still be professional. This section answers that directly.</p>
+    </div>
+    <div class="pricing-proof reveal">
+      <strong>$88,800</strong>
+      <span>possible yearly saving on one US growth stack</span>
+      <p>Example scope: social media, SEO, and Google + Meta ads management. Local agency: about $10,000/mo. Saflow: about $2,600/mo.</p>
+    </div>
+  </div>
+  <div class="country-savings-grid reveal">
+    <article class="country-saving-card">
+      <div class="country-top"><div class="country-name">United States</div><div class="country-flag">🇺🇸</div></div>
+      <div class="country-rate">$75-$150/hr<small>local agency rate</small></div>
+      <div class="saflow-rate">$20-$35/hr with Saflow</div>
+      <div class="save-chip">Client saves 70-80%</div>
+      <div class="country-bar"><span style="width:78%"></span></div>
+    </article>
+    <article class="country-saving-card">
+      <div class="country-top"><div class="country-name">United Kingdom</div><div class="country-flag">🇬🇧</div></div>
+      <div class="country-rate">£50-£120/hr<small>~$63-$151 USD</small></div>
+      <div class="saflow-rate">$20-$35/hr with Saflow</div>
+      <div class="save-chip">Client saves 65-78%</div>
+      <div class="country-bar"><span style="width:72%"></span></div>
+    </article>
+    <article class="country-saving-card">
+      <div class="country-top"><div class="country-name">Germany</div><div class="country-flag">🇩🇪</div></div>
+      <div class="country-rate">€60-€120/hr<small>~$65-$130 USD</small></div>
+      <div class="saflow-rate">$20-$35/hr with Saflow</div>
+      <div class="save-chip">Client saves 65-75%</div>
+      <div class="country-bar"><span style="width:70%"></span></div>
+    </article>
+    <article class="country-saving-card">
+      <div class="country-top"><div class="country-name">UAE / Dubai</div><div class="country-flag">🇦🇪</div></div>
+      <div class="country-rate">AED 200-600/hr<small>~$55-$163 USD</small></div>
+      <div class="saflow-rate">$20-$35/hr with Saflow</div>
+      <div class="save-chip">Client saves 60-78%</div>
+      <div class="country-bar"><span style="width:68%"></span></div>
+    </article>
+    <article class="country-saving-card">
+      <div class="country-top"><div class="country-name">Australia</div><div class="country-flag">🇦🇺</div></div>
+      <div class="country-rate">AUD 120-200/hr<small>~$80-$135 USD</small></div>
+      <div class="saflow-rate">$20-$35/hr with Saflow</div>
+      <div class="save-chip">Client saves 70-80%</div>
+      <div class="country-bar"><span style="width:76%"></span></div>
+    </article>
+  </div>
+  <div class="service-price-grid reveal">
+    <article class="service-price-card">
+      <h3>Social + SEO + Paid Ads</h3>
+      <div class="price-compare-row"><span>US local agency</span><span>$10,000/mo</span></div>
+      <div class="price-compare-row saflow"><span>Saflow same scope</span><span>$2,600/mo</span></div>
+      <div class="price-compare-row"><span>Client keeps</span><span>$7,400/mo</span></div>
+    </article>
+    <article class="service-price-card">
+      <h3>Performance Marketing Mgmt</h3>
+      <div class="price-compare-row"><span>USA</span><span>$2,500-$8,000/mo</span></div>
+      <div class="price-compare-row"><span>UK / Germany</span><span>~$1,640-$6,300/mo</span></div>
+      <div class="price-compare-row saflow"><span>Saflow</span><span>$800-$2,000/mo</span></div>
+    </article>
+    <article class="service-price-card">
+      <h3>Creative + Content Engine</h3>
+      <div class="price-compare-row"><span>Short-form video local</span><span>$3,000-$8,000/mo</span></div>
+      <div class="price-compare-row"><span>Content marketing local</span><span>$2,000-$10,000/mo</span></div>
+      <div class="price-compare-row saflow"><span>Saflow packages</span><span>$500-$2,000/mo</span></div>
+    </article>
+  </div>
+  <p class="client-line reveal"><strong>Customer takeaway:</strong> Saflow is not positioned as "cheap." It is positioned as a smarter operating model: same platforms, same reporting discipline, faster delivery cycle, and 60-80% lower delivery cost.</p>
 </section>
 
 <section class="atlas-section alt section" id="offers">
