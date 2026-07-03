@@ -1181,6 +1181,341 @@ svg.lucide {
     line-height: 1.5;
 }
 
+/* --- Extensions --- */
+.extensions {
+    padding: 120px 0;
+    background: var(--bg);
+}
+
+.extensions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.extension-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition);
+}
+
+.extension-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent);
+}
+
+.extension-illustration {
+    padding: 28px 28px 0;
+}
+
+.extension-info {
+    padding: 28px;
+}
+
+.extension-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    margin-bottom: 14px;
+}
+
+.extension-badge svg,
+.extension-badge i {
+    width: 14px;
+    height: 14px;
+}
+
+.extension-badge-vscode {
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.extension-info h3 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+}
+
+.extension-info > p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.extension-features {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+
+.extension-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.extension-features svg {
+    flex-shrink: 0;
+}
+
+/* Browser mock — Chrome extension illustration */
+.browser-mock {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.mock-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+}
+
+.mock-dot:nth-child(1) { background: #FF6159; }
+.mock-dot:nth-child(2) { background: #FFBD2E; }
+.mock-dot:nth-child(3) { background: #28C840; }
+
+.browser-mock-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.browser-mock-url {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-full);
+    padding: 4px 10px;
+    margin-left: 8px;
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.browser-mock-url i {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+}
+
+.browser-mock-ext {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    background: var(--accent-light);
+    border-radius: 6px;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.browser-mock-ext i {
+    width: 13px;
+    height: 13px;
+}
+
+.browser-mock-body {
+    padding: 22px;
+    min-height: 150px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background: linear-gradient(135deg, var(--accent-light) 0%, #fff 70%);
+}
+
+.browser-mock-popup {
+    width: 140px;
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    padding: 14px;
+}
+
+.popup-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.popup-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.popup-icon i {
+    width: 10px;
+    height: 10px;
+}
+
+.popup-row {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border-light);
+    margin-bottom: 8px;
+}
+
+.popup-row.short {
+    width: 60%;
+}
+
+.popup-toggle {
+    width: 28px;
+    height: 16px;
+    border-radius: 999px;
+    background: var(--accent-light);
+    border: 1px solid var(--accent);
+    position: relative;
+    margin: 12px 0;
+}
+
+.popup-toggle span {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.popup-btn {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--accent);
+    border-radius: 6px;
+    padding: 6px;
+}
+
+/* Editor mock — VS Code extension illustration */
+.editor-mock {
+    background: var(--ink);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.editor-mock-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    background: #0F1613;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.editor-mock-tabs {
+    display: flex;
+    gap: 4px;
+    margin-left: 10px;
+}
+
+.editor-tab {
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 6px 6px 0 0;
+    color: var(--text-muted);
+    background: transparent;
+    white-space: nowrap;
+}
+
+.editor-tab.active {
+    background: var(--ink);
+    color: #fff;
+    border-top: 2px solid var(--accent-warm);
+}
+
+.editor-mock-body {
+    display: flex;
+    min-height: 150px;
+}
+
+.editor-mock-side {
+    width: 38px;
+    background: #0F1613;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    color: var(--text-secondary);
+}
+
+.editor-mock-side i {
+    width: 15px;
+    height: 15px;
+}
+
+.editor-mock-side .side-active {
+    color: var(--accent-warm);
+}
+
+.editor-mock-code {
+    flex: 1;
+    padding: 18px;
+}
+
+.code-line {
+    height: 7px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.12);
+    margin-bottom: 10px;
+    width: 85%;
+}
+
+.code-line.indent {
+    margin-left: 16px;
+    width: 65%;
+    background: rgba(244,185,66,0.35);
+}
+
+.code-line.short {
+    width: 40%;
+}
+
 /* --- Contact --- */
 .contact {
     padding: 120px 0;
@@ -1388,6 +1723,11 @@ svg.lucide {
     .apps-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    .extensions-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+    }
     .contact-grid {
         grid-template-columns: 1fr;
         gap: 48px;
@@ -1473,6 +1813,7 @@ svg.lucide {
     .process,
     .addons,
     .apps,
+    .extensions,
     .contact {
         padding: 80px 0;
     }
